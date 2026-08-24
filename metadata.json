@@ -1,0 +1,6 @@
+{
+  "name": "Zanzibar – Wycieczki Marzeń z Anią",
+  "description": "Boutique private and small-group excursions in Zanzibar organized by Ania. Authentic experiences, private boats, safari, and personalized itineraries in Uroa, Zanzibar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
