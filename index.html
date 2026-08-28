@@ -27,6 +27,16 @@
       href="https://i.ibb.co/WpGxF5VZ/780817365-1039831378857427-3206199728021288373-n.jpg"
     />
 
+    <!-- Fast Image CDN Preconnect & Hero Preload -->
+    <link rel="preconnect" href="https://i.ibb.co" crossorigin />
+    <link rel="dns-prefetch" href="https://i.ibb.co" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://i.ibb.co/ymFnBcCy/481032139-616842084489694-6965225212112104810-n.webp"
+      fetchpriority="high"
+    />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -517,7 +527,7 @@
         align-items: center;
         justify-content: center;
         color: var(--sand-white);
-        background-image: url('https://i.ibb.co/N6dRKBQQ/717201341-978206468353252-4323968915991920777-n.jpg');
+        background-image: url('https://i.ibb.co/ymFnBcCy/481032139-616842084489694-6965225212112104810-n.webp');
         background-size: cover;
         background-position: center 38%;
         background-repeat: no-repeat;
@@ -761,14 +771,106 @@
 
       .experience-title {
         font-size: 1.55rem;
-        color: var(--sand-white);
-        margin-bottom: 10px;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       }
 
       .experience-desc {
-        color: rgba(255, 253, 248, 0.85);
+        color: #FFFFFF;
         font-size: 0.96rem;
-        line-height: 1.65;
+        line-height: 1.75;
+      }
+
+      .experience-desc p {
+        margin-bottom: 12px;
+        color: #FFFFFF;
+        opacity: 0.98;
+      }
+
+      .experience-desc p:last-child {
+        margin-bottom: 0;
+      }
+
+      .experience-desc strong {
+        color: var(--golden-light);
+        font-weight: 600;
+      }
+
+      .experience-note {
+        font-style: italic;
+        color: var(--golden-light) !important;
+        opacity: 0.95;
+      }
+
+      /* Expandable text details */
+      .experience-details {
+        margin-top: 10px;
+      }
+
+      .experience-cta-btn {
+        white-space: normal;
+        text-align: center;
+        max-width: 100%;
+        line-height: 1.4;
+        word-break: normal;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+      }
+
+      .experience-summary-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--golden-light);
+        background: rgba(201, 161, 90, 0.15);
+        border: 1px solid rgba(223, 191, 131, 0.4);
+        padding: 8px 18px;
+        border-radius: 9999px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.25s var(--ease);
+        list-style: none;
+      }
+
+      .experience-summary-btn::-webkit-details-marker {
+        display: none;
+      }
+
+      .experience-summary-btn:hover {
+        background: rgba(201, 161, 90, 0.28);
+        border-color: var(--golden-light);
+        color: #FFFFFF;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .experience-details[open] .summary-text-closed {
+        display: none;
+      }
+
+      .experience-details:not([open]) .summary-text-open {
+        display: none;
+      }
+
+      .experience-expanded-content {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px dashed rgba(223, 191, 131, 0.3);
+        animation: fadeInExpand 0.35s ease;
+      }
+
+      @keyframes fadeInExpand {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* --- GALLERY SECTION --- */
@@ -779,32 +881,32 @@
       }
 
       .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
+        column-count: 3;
+        column-gap: 20px;
       }
 
       .gallery-item {
-        margin: 0;
+        margin: 0 0 20px 0;
+        break-inside: avoid;
+        display: inline-block;
+        width: 100%;
         position: relative;
         border-radius: var(--radius);
         overflow: hidden;
         border: 1px solid var(--border-color);
         background-color: var(--warm-ivory);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        aspect-ratio: 4 / 3;
       }
 
       .gallery-item img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
         display: block;
         transition: transform 0.35s var(--ease);
       }
 
       .gallery-item:hover img {
-        transform: scale(1.04);
+        transform: scale(1.03);
       }
 
       .gallery-toggle-input {
@@ -820,7 +922,7 @@
       }
 
       .gallery-toggle-input:checked ~ .gallery-grid .gallery-extra {
-        display: block;
+        display: inline-block;
       }
 
       .gallery-controls {
@@ -1173,7 +1275,12 @@
         }
 
         .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
+          column-count: 2;
+          column-gap: 16px;
+        }
+
+        .gallery-item {
+          margin-bottom: 16px;
         }
 
         .reviews-grid {
@@ -1212,6 +1319,14 @@
       }
 
       @media (max-width: 600px) {
+        .btn {
+          white-space: normal;
+          max-width: 100%;
+          text-align: center;
+          line-height: 1.35;
+          padding: 12px 18px;
+        }
+
         .container {
           padding: 0 14px;
         }
@@ -1221,12 +1336,12 @@
         }
 
         .gallery-grid {
-          grid-template-columns: 1fr;
-          gap: 14px;
+          column-count: 1;
+          column-gap: 0;
         }
 
         .gallery-item {
-          aspect-ratio: 16 / 10;
+          margin-bottom: 14px;
         }
 
         .hero {
@@ -1344,7 +1459,7 @@
 
           <div class="nav-desktop-cta">
             <a
-              href="https://wa.me/255776108338"
+              href="https://wa.me/48604491892"
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-turquoise"
@@ -1375,7 +1490,7 @@
           <li><a href="#kontakt" class="mobile-nav-link" onclick="document.getElementById('nav-toggle').checked=false">Kontakt & Rezerwacje</a></li>
         </ul>
         <a
-          href="https://wa.me/255776108338"
+          href="https://wa.me/48604491892"
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-turquoise"
@@ -1424,7 +1539,11 @@
             </div>
             <div class="hero-meta-item">
               <span>📞</span>
-              <a href="tel:+255776108338" class="text-mono" style="color: var(--golden-light);">
+              <a href="tel:+48604491892" class="text-mono" style="color: var(--golden-light);">
+                +48 604 491 892
+              </a>
+              <span style="opacity: 0.6; margin: 0 4px;">/</span>
+              <a href="tel:+255776108338" class="text-mono" style="color: rgba(255, 253, 248, 0.85);">
                 +255 776 108 338
               </a>
             </div>
@@ -1503,33 +1622,112 @@
           </div>
 
           <div class="experiences-grid">
-            <!-- Card 1: Prywatne łodzie -->
-            <article class="experience-card" id="exp-card-1">
+            <!-- Card 1: Atol Mnemba -->
+            <article class="experience-card" id="exp-card-mnemba">
               <div class="experience-img-wrap">
                 <span class="experience-number">01</span>
                 <img
-                  src="https://i.ibb.co/4g9KBt8k/766762555-1032834032890495-2595682031861922042-n.jpg"
-                  alt="Prywatne łodzie na lazurowych wodach Zanzibaru"
+                  src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg"
+                  alt="Atol Mnemba – turkusowa woda i rafa koralowa"
                   class="experience-img"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
               <div class="experience-body">
-                <h3 class="experience-title">Prywatne łodzie</h3>
-                <p class="experience-desc">
-                  Rejsy na wyłączność po turkusowych lagunach Oceanu Indyjskiego. Dziewicze sandbanki, snurkowanie na rafach koralowych i degustacja świeżych owoców morza bez pośpiechu i bez obcych grup.
-                </p>
+                <h3 class="experience-title">Atol Mnemba</h3>
+                <div class="experience-desc">
+                  <p>🏝Atol Mnemba to jedno z tych miejsc na Zanzibarze, które zostają w pamięci na długo. Turkusowa, krystalicznie czysta woda, kolorowe ryby i niezwykły podwodny świat sprawiają, że jest to idealne miejsce na chwilę zachwytu nad pięknem Oceanu Indyjskiego.</p>
+                  <details class="experience-details">
+                    <summary class="experience-summary-btn">
+                      <span class="summary-text-closed">✦ Przeczytaj pełny opis wycieczki ▾</span>
+                      <span class="summary-text-open">▴ Zwiń opis</span>
+                    </summary>
+                    <div class="experience-expanded-content">
+                      <p>Wypływamy w okolice wyspy Mnemba, gdzie znajdują się piękne rafy koralowe. Podczas snurkowania możemy podziwiać kolorowe ławice tropikalnych ryb, koralowce i inne morskie stworzenia. Nie trzeba być nurkiem — wystarczy maska, odrobina odwagi i chęć odkrywania podwodnego świata. 🤿</p>
+                      <p>Po snurkowaniu czeka na Was poczęstunek ze świeżych, lokalnych owoców – soczyste mango, ananas, arbuz czy banany smakują wyjątkowo w takiej scenerii. 🍍🥭</p>
+                      <p>Kiedy ocean odsłania piaszczystą ławicę podczas odpływu, mamy czas na relaks, spacer po białym piasku i zdjęcia wśród turkusowych wód. To jeden z tych momentów, kiedy Zanzibar wygląda jak z pocztówki. 🤍🌊</p>
+                      <p>A jeśli macie ochotę na coś więcej, opcjonalnie możemy zorganizować lunch na plaży – świeże owoce morza przygotowane w lokalnym stylu. 🦐🐙</p>
+                      <p>To wycieczka dla tych, którzy chcą nie tylko zobaczyć Zanzibar, ale przede wszystkim poczuć jego kolory, smaki i wyjątkową atmosferę. 🌴💙</p>
+                      <p class="experience-note">Pobyt na sandbanku odbywają się w zależności od pływów.</p>
+                    </div>
+                  </details>
+                </div>
               </div>
             </article>
 
-            <!-- Card 2: Safari prywatnym jeepem -->
-            <article class="experience-card" id="exp-card-2">
+            <!-- Card 2: The Rock Restaurant -->
+            <article class="experience-card" id="exp-card-therock">
               <div class="experience-img-wrap">
                 <span class="experience-number">02</span>
                 <img
-                  src="https://i.ibb.co/gB8s5y7/772760177-1032834282890470-3117812620340155473-n.jpg"
-                  alt="Safari prywatnym jeepem z przewodnikiem"
+                  src="https://i.ibb.co/JWjRLqVz/469074014-552214544280960-5277976993966686069-n.jpg"
+                  alt="The Rock Restaurant – restauracja na oceanicznej skale"
+                  class="experience-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="experience-body">
+                <h3 class="experience-title">The Rock Restaurant</h3>
+                <div class="experience-desc">
+                  <p>The Rock Restaurant to jedno z najbardziej charakterystycznych miejsc na Zanzibarze – niewielka restauracja położona na samotnej skale, wyrastającej prosto z oceanu. 🌊</p>
+                  <details class="experience-details">
+                    <summary class="experience-summary-btn">
+                      <span class="summary-text-closed">✦ Przeczytaj pełny opis wycieczki ▾</span>
+                      <span class="summary-text-open">▴ Zwiń opis</span>
+                    </summary>
+                    <div class="experience-expanded-content">
+                      <p>Ale warto odwiedzić ją nie tylko dla samej restauracji czy jedzenia. To przede wszystkim miejsce, które aż prosi się o piękne zdjęcia! 📸 Turkusowa woda, biała plaża, skała pośrodku oceanu i charakterystyczny budynek tworzą wyjątkowe, zanzibarskie kadry.</p>
+                      <p>Można zrobić tutaj pamiątkowe zdjęcia z widokiem na The Rock, przejść się po plaży i nacieszyć oczy niesamowitym krajobrazem. Przy odpływie można podejść bliżej restauracji, a podczas przypływu wygląda ona, jakby naprawdę unosiła się na oceanie. ✨</p>
+                      <p>The Rock to jeden z tych punktów na Zanzibarze, które warto zobaczyć choćby po to, żeby zrobić tę jedną wyjątkową fotografię, która będzie przypominać o wyspie jeszcze długo po powrocie. 🌴💙</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Spacer po lokalnej wiosce -->
+            <article class="experience-card" id="exp-card-village">
+              <div class="experience-img-wrap">
+                <span class="experience-number">03</span>
+                <img
+                  src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg"
+                  alt="Spacer po lokalnej wiosce – Zanzibar z bliska"
+                  class="experience-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="experience-body">
+                <h3 class="experience-title">Spacer po lokalnej wiosce – Zanzibar z bliska</h3>
+                <div class="experience-desc">
+                  <p>Jeśli chcecie zobaczyć Zanzibar takim, jakim jest naprawdę, warto choć na chwilę zejść z utartych turystycznych ścieżek i odwiedzić lokalną wioskę. ❤️</p>
+                  <details class="experience-details">
+                    <summary class="experience-summary-btn">
+                      <span class="summary-text-closed">✦ Przeczytaj pełny opis wycieczki ▾</span>
+                      <span class="summary-text-open">▴ Zwiń opis</span>
+                    </summary>
+                    <div class="experience-expanded-content">
+                      <p>Podczas spokojnego spaceru poznacie codzienne życie mieszkańców – zobaczycie tradycyjne domy, małe lokalne sklepiki, dzieci wracające ze szkoły, mieszkańców zajmujących się swoimi codziennymi obowiązkami i miejsca, które dla turysty często pozostają zupełnie niewidoczne.</p>
+                      <p>To nie jest przedstawienie przygotowane dla turystów. To zwykłe życie, które toczy się swoim rytmem. I właśnie to jest w tym najpiękniejsze. 🌿</p>
+                      <p>Podczas spaceru opowiemy Wam o życiu na Zanzibarze, lokalnych zwyczajach, rodzinach i codzienności mieszkańców. Będzie też czas na rozmowę i spotkanie z ludźmi, dzięki któremu można lepiej zrozumieć wyspę i jej mieszkańców.</p>
+                      <p>Chcemy, żeby taka wizyta była przede wszystkim pełnym szacunku spotkaniem, a nie tylko kolejną atrakcją do odhaczenia.</p>
+                      <p>Bo Zanzibar to nie tylko miejsca, które fotografujemy. To przede wszystkim ludzie, ich historie, uśmiechy i codzienne życie. ❤️</p>
+                      <p>I właśnie tę stronę wyspy chciałabym Wam pokazać. 🌴✨</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Safari prywatnym jeepem -->
+            <article class="experience-card" id="exp-card-safari">
+              <div class="experience-img-wrap">
+                <span class="experience-number">04</span>
+                <img
+                  src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg"
+                  alt="Safari prywatnym jeepem w Tanzanii"
                   class="experience-img"
                   loading="lazy"
                   decoding="async"
@@ -1537,49 +1735,60 @@
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Safari prywatnym jeepem</h3>
-                <p class="experience-desc">
-                  Niezapomniane wyprawy w głąb dzikiej afrykańskiej sawanny. Dedykowany samochód terenowy 4x4, komfort dla Twojej grupy i bezpośrednie obcowanie ze zwierzętami w ich naturalnym środowisku.
-                </p>
+                <div class="experience-desc">
+                  <p>Niezapomniane wyprawy w głąb dzikiej afrykańskiej sawanny. Dedykowany samochód terenowy 4x4, komfort dla Twojej grupy i bezpośrednie obcowanie ze zwierzętami w ich naturalnym środowisku. 🦁🐘</p>
+                  <details class="experience-details">
+                    <summary class="experience-summary-btn">
+                      <span class="summary-text-closed">✦ Przeczytaj pełny opis wycieczki ▾</span>
+                      <span class="summary-text-open">▴ Zwiń opis</span>
+                    </summary>
+                    <div class="experience-expanded-content">
+                      <p>Zapewniamy pełną organizację i sprawdzonych przewodników: przeloty z Zanzibaru na kontynent, zakwaterowanie w komfortowych lodgach, wyżywienie oraz ekscytujące safari fotograficzne w rytmie <em>pole pole</em>.</p>
+                    </div>
+                  </details>
+                </div>
               </div>
             </article>
 
-            <!-- Card 3: Indywidualne wycieczki -->
-            <article class="experience-card" id="exp-card-3">
-              <div class="experience-img-wrap">
-                <span class="experience-number">03</span>
+            <!-- Card 5: Odkryj więcej – Wycieczki na życzenie -->
+            <article class="experience-card" id="exp-card-custom" style="grid-column: 1 / -1;">
+              <div class="experience-img-wrap" style="height: 280px;">
+                <span class="experience-number">05</span>
                 <img
-                  src="https://i.ibb.co/7xc8Nd82/768261528-1032834439557121-8981045396276900280-n.jpg"
-                  alt="Indywidualne wycieczki po wyspie Zanzibar"
+                  src="https://i.ibb.co/xKLqgHvm/770135819-1032834699557095-3842696231338571212-n-1-2.jpg"
+                  alt="Zanzibar ma jeszcze wiele do odkrycia – wycieczki szyte na miarę"
                   class="experience-img"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
               <div class="experience-body">
-                <h3 class="experience-title">Indywidualne wycieczki</h3>
-                <p class="experience-desc">
-                  Zabytkowe Stone Town, aromatyczne plantacje zanzibarskich przypraw, las Jozani i spotkania z lokalną kulturą. Programy dopracowane w najmniejszych szczegółach pod Twoje marzenia.
-                </p>
-              </div>
-            </article>
-
-            <!-- Card 4: Zwiedzanie Zanzibaru w swoim tempie -->
-            <article class="experience-card" id="exp-card-4">
-              <div class="experience-img-wrap">
-                <span class="experience-number">04</span>
-                <img
-                  src="https://i.ibb.co/HDj4Bv32/766810634-1032834822890416-252847029979997763-n.jpg"
-                  alt="Niespieszne odkrywanie Zanzibaru w rytmie pole pole"
-                  class="experience-img"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="experience-body">
-                <h3 class="experience-title">Zwiedzanie Zanzibaru w swoim tempie</h3>
-                <p class="experience-desc">
-                  Gwarancja swobody i relaksu. Żadnego poganiania i sztywnych ram czasowych. Z Anią i Jej zaangażowaną ekipą poczujesz autentyczny zanzibarski spokój i gościnność.
-                </p>
+                <h3 class="experience-title">Zanzibar ma jeszcze wiele do odkrycia…</h3>
+                <div class="experience-desc">
+                  <p>Zanzibar to nie tylko białe plaże, turkusowy ocean i zachody słońca. Ta wyspa ma naprawdę wiele do zaoferowania – od wyjątkowych miejsc i morskich przygód, przez lokalną kulturę i smaki, aż po niezapomniane wyprawy poza wyspę. 💙</p>
+                  <details class="experience-details">
+                    <summary class="experience-summary-btn">
+                      <span class="summary-text-closed">✦ Dowiedz się więcej o wycieczkach na życzenie ▾</span>
+                      <span class="summary-text-open">▴ Zwiń opis</span>
+                    </summary>
+                    <div class="experience-expanded-content">
+                      <p>Przedstawiliśmy tutaj nasze najpopularniejsze propozycje, ale to nie jest zamknięta lista. Jeśli marzycie o czymś innym, macie własny pomysł albo podczas pobytu chcielibyście odkryć mniej oczywiste zakątki Zanzibaru – napiszcie do nas. Chętnie poszukamy możliwości i przygotujemy wycieczkę dopasowaną właśnie do Was. ❤️</p>
+                      <p>Bo właśnie na tym nam zależy – żebyście nie realizowali gotowego programu, tylko swoje własne marzenia o Zanzibarze. 🌴✨</p>
+                      <p><strong>Wy powiedzcie, o czym marzycie. My postaramy się zamienić to w piękne wspomnienia. 🥰</strong></p>
+                    </div>
+                  </details>
+                </div>
+                <div style="margin-top: 20px;">
+                  <a
+                    id="btn-plan-custom-trip"
+                    href="https://wa.me/48604491892"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-gold experience-cta-btn"
+                  >
+                    NAPISZ DO ANI I ZAPLANUJ WYCIECZKĘ
+                  </a>
+                </div>
               </div>
             </article>
           </div>
@@ -1750,15 +1959,6 @@
                 decoding="async"
               />
             </figure>
-
-            <figure class="gallery-item gallery-extra">
-              <img
-                src="https://i.ibb.co/nNNK17s9/774026859-1032834919557073-7740156942475010996-n.jpg"
-                alt="Egzotyczna fauna i rajskie zakątki Zanzibaru"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
           </div>
 
           <div class="gallery-controls">
@@ -1793,9 +1993,7 @@
                 Niezapomniany wyjazd! Prywatna łódź na sandbank tylko dla nas to było czyste szaleństwo. Ania dopięła każdy szczegół na medal. Dziękujemy z całego serca!
               </p>
               <div class="review-author">
-                <div class="author-badge">MK</div>
                 <div class="author-info">
-                  <h4>Marta i Krzysztof</h4>
                   <span>Wycieczka prywatną łodzią</span>
                 </div>
               </div>
@@ -1808,9 +2006,7 @@
                 Safari z dedykowanym jeepem przerosło nasze oczekiwania. Żadnego pośpiechu, wspaniały kontakt i opieka w języku polskim. Zanzibar z Anią to strzał w dziesiątkę!
               </p>
               <div class="review-author">
-                <div class="author-badge">TR</div>
                 <div class="author-info">
-                  <h4>Tomasz R.</h4>
                   <span>Safari i Stone Town</span>
                 </div>
               </div>
@@ -1823,9 +2019,7 @@
                 Cudowna atmosfera, elastyczność i pełen profesjonalizm. Prawdziwe hakuna matata! Polecam każdemu, kto ceni sobie komfort i kameralność.
               </p>
               <div class="review-author">
-                <div class="author-badge">EP</div>
                 <div class="author-info">
-                  <h4>Ewelina i Paweł</h4>
                   <span>Wyprawy po wyspie</span>
                 </div>
               </div>
@@ -1861,9 +2055,21 @@
                 <div class="contact-channel-item">
                   <div class="channel-icon-wrap" aria-hidden="true">📞</div>
                   <div class="channel-text">
-                    <span class="channel-label">Telefon & WhatsApp</span>
+                    <span class="channel-label">Telefon & WhatsApp (Główny kontakt)</span>
                     <span class="channel-val">
-                      <a href="https://wa.me/255776108338" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/48604491892" target="_blank" rel="noopener noreferrer">
+                        +48 604 491 892
+                      </a>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="contact-channel-item">
+                  <div class="channel-icon-wrap" aria-hidden="true">🌴</div>
+                  <div class="channel-text">
+                    <span class="channel-label">Kontakt lokalny (Zanzibar)</span>
+                    <span class="channel-val">
+                      <a href="tel:+255776108338">
                         +255 776 108 338
                       </a>
                     </span>
@@ -1885,7 +2091,7 @@
 
               <div class="contact-actions">
                 <a
-                  href="https://wa.me/255776108338"
+                  href="https://wa.me/48604491892"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-turquoise"
@@ -1894,11 +2100,11 @@
                   Napisz na WhatsApp
                 </a>
                 <a
-                  href="tel:+255776108338"
+                  href="tel:+48604491892"
                   class="btn btn-outline-dark"
                   id="contact-action-call"
                 >
-                  Zadzwoń teraz
+                  Zadzwoń teraz (+48)
                 </a>
               </div>
             </div>
@@ -1936,7 +2142,7 @@
 
         <div class="footer-bottom">
           <div>
-            © 2025 Zanzibar – Wycieczki Marzeń z Anią. Wszelkie prawa zastrzeżone.
+            © 2026 Zanzibar – Wycieczki Marzeń z Anią. Wszelkie prawa zastrzeżone.
           </div>
           <div class="footer-location">
             <span>📍 Uroa, Zanzibar, Tanzania</span>
@@ -1947,7 +2153,7 @@
 
     <!-- STICKY FLOATING WHATSAPP BUTTON -->
     <a
-      href="https://wa.me/255776108338"
+      href="https://wa.me/48604491892"
       target="_blank"
       rel="noopener noreferrer"
       class="whatsapp-float-btn"
