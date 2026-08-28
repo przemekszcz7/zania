@@ -876,7 +876,7 @@
       /* --- GALLERY SECTION --- */
       .gallery-intro {
         text-align: center;
-        max-width: 720px;
+        max-width: 680px;
         margin: 0 auto 44px;
       }
 
@@ -886,51 +886,55 @@
       }
 
       .gallery-item {
-        margin: 0 0 20px 0;
         break-inside: avoid;
         display: inline-block;
         width: 100%;
+        margin-bottom: 20px;
         position: relative;
         border-radius: var(--radius);
         overflow: hidden;
         border: 1px solid var(--border-color);
         background-color: var(--warm-ivory);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
       }
 
       .gallery-item img {
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.35s var(--ease);
+        transition: transform 0.4s var(--ease);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       }
 
       .gallery-item:hover img {
-        transform: scale(1.03);
+        transform: scale(1.04);
       }
 
-      .gallery-toggle-input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-        width: 0;
-        height: 0;
-      }
-
+      /* Hidden extra items with smooth fade-in */
       .gallery-extra {
         display: none;
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
       }
 
-      .gallery-toggle-input:checked ~ .gallery-grid .gallery-extra {
-        display: inline-block;
+      .gallery-extra.gallery-item-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       .gallery-controls {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 36px;
       }
 
-      .gallery-btn-label {
+      .gallery-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -946,27 +950,20 @@
         border: 1px solid var(--deep-charcoal);
         background-color: transparent;
         color: var(--deep-charcoal);
-        transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+        transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
         user-select: none;
         -webkit-tap-highlight-color: transparent;
       }
 
-      .gallery-btn-label:hover {
+      .gallery-btn:hover {
         background-color: var(--deep-charcoal);
         color: var(--sand-white);
         transform: translateY(-2px);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
       }
 
-      .gallery-toggle-input:not(:checked) ~ .gallery-controls .text-show-less {
+      .gallery-btn .text-show-less {
         display: none;
-      }
-
-      .gallery-toggle-input:checked ~ .gallery-controls .text-show-more {
-        display: none;
-      }
-
-      .gallery-toggle-input:checked ~ .gallery-controls .text-show-less {
-        display: inline;
       }
 
       /* --- OPINIE (TESTIMONIALS) --- */
@@ -1810,11 +1807,8 @@
             </p>
           </div>
 
-          <!-- Pure CSS Gallery Expansion Toggle -->
-          <input type="checkbox" id="gallery-toggle" class="gallery-toggle-input" aria-hidden="true" />
-
+          <!-- Unified Gallery Grid -->
           <div class="gallery-grid" id="gallery-container">
-            <!-- Initial visible 6 images -->
             <figure class="gallery-item">
               <img
                 src="https://i.ibb.co/N6dRKBQQ/717201341-978206468353252-4323968915991920777-n.jpg"
@@ -1869,7 +1863,7 @@
               />
             </figure>
 
-            <!-- Extra expandable images -->
+            <!-- Extra expandable images (fade-in staggered on click) -->
             <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/PsVk9XqP/771823637-1032834186223813-3912518524275386153-n.jpg"
@@ -1962,10 +1956,15 @@
           </div>
 
           <div class="gallery-controls">
-            <label for="gallery-toggle" class="gallery-btn-label" id="gallery-btn" aria-label="Pokaż więcej lub mniej zdjęć w galerii">
+            <button
+              type="button"
+              class="gallery-btn"
+              id="gallery-toggle-btn"
+              aria-label="Pokaż więcej lub mniej zdjęć w galerii"
+            >
               <span class="text-show-more">POKAŻ WIĘCEJ ZDJĘĆ</span>
               <span class="text-show-less">POKAŻ MNIEJ ZDJĘĆ</span>
-            </label>
+            </button>
           </div>
         </div>
       </section>
@@ -2165,5 +2164,57 @@
       </svg>
       <span class="whatsapp-float-text">Napisz na WhatsApp</span>
     </a>
+
+    <script>
+      // Smooth gallery expansion without jump
+      document.addEventListener('DOMContentLoaded', () => {
+        const galleryBtn = document.getElementById('gallery-toggle-btn');
+        const galleryItems = document.querySelectorAll('.gallery-extra');
+        let isExpanded = false;
+
+        if (galleryBtn && galleryItems.length > 0) {
+          const textMore = galleryBtn.querySelector('.text-show-more');
+          const textLess = galleryBtn.querySelector('.text-show-less');
+
+          galleryBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isExpanded = !isExpanded;
+
+            if (isExpanded) {
+              galleryItems.forEach((item, index) => {
+                item.style.display = 'inline-block';
+                setTimeout(() => {
+                  item.classList.add('gallery-item-visible');
+                }, 20 + index * 30);
+              });
+              if (textMore) textMore.style.display = 'none';
+              if (textLess) textLess.style.display = 'inline';
+            } else {
+              galleryItems.forEach((item) => {
+                item.classList.remove('gallery-item-visible');
+              });
+              setTimeout(() => {
+                if (!isExpanded) {
+                  galleryItems.forEach((item) => {
+                    item.style.display = 'none';
+                  });
+                }
+              }, 350);
+              if (textMore) textMore.style.display = 'inline';
+              if (textLess) textLess.style.display = 'none';
+
+              // Smoothly scroll back if user is scrolled far down past gallery start
+              const galeria = document.getElementById('galeria');
+              if (galeria) {
+                const rect = galeria.getBoundingClientRect();
+                if (rect.top < -100) {
+                  galeria.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
