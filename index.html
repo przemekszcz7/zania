@@ -736,7 +736,7 @@
 
       .experience-img-wrap {
         position: relative;
-        height: 260px;
+        height: 400px;
         overflow: hidden;
         background-color: var(--tropical-dark);
       }
@@ -745,21 +745,75 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
+        transition: transform 0.4s var(--ease);
+      }
+
+      .experience-card:hover .experience-img {
+        transform: scale(1.02);
+      }
+
+      .card-arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(23, 26, 24, 0.78);
+        border: 1px solid rgba(229, 222, 209, 0.35);
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 5;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease), color 0.2s var(--ease);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        padding: 0;
+      }
+
+      .card-arrow-btn:hover {
+        background: var(--tropical-dark);
+        border-color: var(--golden-sand);
+        color: var(--golden-light);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .card-arrow-btn:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+
+      .card-arrow-prev {
+        left: 12px;
+      }
+
+      .card-arrow-next {
+        right: 12px;
+      }
+
+      @media (max-width: 600px) {
+        .card-arrow-btn {
+          width: 36px;
+          height: 36px;
+        }
+        .card-arrow-prev {
+          left: 8px;
+        }
+        .card-arrow-next {
+          right: 8px;
+        }
       }
 
       .experience-number {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        background: rgba(23, 26, 24, 0.85);
-        color: var(--golden-light);
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        font-weight: 500;
-        padding: 5px 12px;
-        border-radius: var(--radius);
-        border: 1px solid rgba(201, 161, 90, 0.4);
-        letter-spacing: 0.1em;
+        display: none !important;
+      }
+
+      /* Subtle downward alignment for fishing photo 3 */
+      img[src*="mrdwQb88"] {
+        object-position: center 25% !important;
       }
 
       .experience-body {
@@ -870,6 +924,307 @@
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      /* Photo Gallery inside Experience Cards */
+      .experience-photo-count {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(23, 26, 24, 0.88);
+        color: var(--golden-light);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 5px 12px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(201, 161, 90, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        letter-spacing: 0.05em;
+        pointer-events: none;
+        z-index: 2;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .zoomable-card-img {
+        cursor: pointer;
+        transition: transform 0.4s var(--ease), opacity 0.25s ease;
+      }
+
+      .zoomable-card-img:hover {
+        transform: scale(1.03);
+      }
+
+      .card-thumbs-strip {
+        display: flex;
+        gap: 8px;
+        padding: 10px 14px;
+        background: rgba(14, 18, 16, 0.96);
+        border-bottom: 1px solid rgba(201, 161, 90, 0.2);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--golden-sand) transparent;
+      }
+
+      .card-thumbs-strip::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .card-thumbs-strip::-webkit-scrollbar-thumb {
+        background: var(--golden-sand);
+        border-radius: 4px;
+      }
+
+      .card-thumb-item {
+        width: 58px;
+        height: 44px;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        flex-shrink: 0;
+        padding: 0;
+        background: transparent;
+        transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+        opacity: 0.65;
+      }
+
+      .card-thumb-item:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+        border-color: var(--golden-light);
+      }
+
+      .card-thumb-item.active {
+        opacity: 1;
+        border-color: var(--golden-sand);
+        box-shadow: 0 0 0 2px rgba(201, 161, 90, 0.6);
+        transform: scale(1.02);
+      }
+
+      .card-thumb-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        pointer-events: none;
+      }
+
+      /* Expanded tour photos */
+      .tour-gallery-preview {
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px dashed rgba(223, 191, 131, 0.3);
+      }
+
+      .tour-gallery-label {
+        display: block;
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--golden-light);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+      }
+
+      .tour-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+        gap: 10px;
+      }
+
+      .tour-gallery-item {
+        position: relative;
+        aspect-ratio: 4/3;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(201, 161, 90, 0.3);
+        cursor: pointer;
+        padding: 0;
+        background: var(--tropical-dark);
+        transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      }
+
+      .tour-gallery-item:hover {
+        transform: scale(1.04);
+        border-color: var(--golden-sand);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      }
+
+      .tour-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .tour-gallery-item .zoom-badge {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 22px;
+        height: 22px;
+        background: rgba(15, 20, 18, 0.85);
+        color: var(--golden-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        border: 1px solid rgba(201, 161, 90, 0.4);
+        pointer-events: none;
+      }
+
+      /* Fullscreen Lightbox Modal */
+      .site-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .site-lightbox.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .lightbox-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(8, 12, 10, 0.94);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .lightbox-content {
+        position: relative;
+        z-index: 2;
+        max-width: 92vw;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-img-wrap {
+        position: relative;
+        max-width: 100%;
+        max-height: 78vh;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid rgba(201, 161, 90, 0.4);
+        background: rgba(14, 18, 16, 0.9);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+
+      .lightbox-img-wrap img {
+        display: block;
+        max-width: 100%;
+        max-height: 78vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        transition: opacity 0.2s ease;
+      }
+
+      .lightbox-caption {
+        margin-top: 14px;
+        color: #EDE6D8;
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        text-align: center;
+        max-width: 650px;
+        line-height: 1.5;
+        font-style: italic;
+      }
+
+      .lightbox-counter {
+        margin-top: 6px;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--golden-light);
+        opacity: 0.8;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -46px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(201, 161, 90, 0.4);
+        color: var(--golden-light);
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      }
+
+      .lightbox-close:hover {
+        background: var(--golden-sand);
+        color: var(--deep-charcoal);
+        transform: scale(1.08);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: rgba(14, 18, 16, 0.85);
+        border: 1px solid rgba(201, 161, 90, 0.5);
+        color: var(--golden-light);
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+      }
+
+      .lightbox-nav:hover {
+        background: var(--golden-sand);
+        color: var(--deep-charcoal);
+        border-color: var(--golden-sand);
+        transform: translateY(-50%) scale(1.08);
+      }
+
+      .lightbox-prev {
+        left: -64px;
+      }
+
+      .lightbox-next {
+        right: -64px;
+      }
+
+      @media (max-width: 840px) {
+        .lightbox-prev {
+          left: 6px;
+        }
+        .lightbox-next {
+          right: 6px;
+        }
+        .lightbox-close {
+          top: -42px;
+          right: 0;
         }
       }
 
@@ -1310,12 +1665,19 @@
           grid-template-columns: 1fr;
         }
 
+        .experience-img-wrap {
+          height: 380px;
+        }
+
         .section {
           padding: 64px 0;
         }
       }
 
       @media (max-width: 600px) {
+        .experience-img-wrap {
+          height: 300px;
+        }
         .btn {
           white-space: normal;
           max-width: 100%;
@@ -1622,14 +1984,41 @@
             <!-- Card 1: Atol Mnemba -->
             <article class="experience-card" id="exp-card-mnemba">
               <div class="experience-img-wrap">
-                <span class="experience-number">01</span>
+                <span class="experience-photo-count">📷 6 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Mnemba">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Mnemba">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-mnemba"
                   src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg"
                   alt="Atol Mnemba – turkusowa woda i rafa koralowa"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-mnemba">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" data-alt="Atol Mnemba – turkusowa woda i rafa koralowa" aria-label="Zdjęcie 1 Atol Mnemba">
+                  <img src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" alt="Miniatura Mnemba 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" data-alt="Atol Mnemba – błękit oceanu i rejs ku rafom" aria-label="Zdjęcie 2 Atol Mnemba">
+                  <img src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" alt="Miniatura Mnemba 2" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" data-alt="Atol Mnemba – wyprawa łodzią na rafy" aria-label="Zdjęcie 3 Atol Mnemba">
+                  <img src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" alt="Miniatura Mnemba 3" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" data-alt="Atol Mnemba – snurkowanie i podwodny świat" aria-label="Zdjęcie 4 Atol Mnemba">
+                  <img src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" alt="Miniatura Mnemba 4" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" data-alt="Atol Mnemba – piaszczysta ławica sandbank" aria-label="Zdjęcie 5 Atol Mnemba">
+                  <img src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" alt="Miniatura Mnemba 5" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" data-alt="Atol Mnemba – turkusowe wody Oceanu Indyjskiego" aria-label="Zdjęcie 6 Atol Mnemba">
+                  <img src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" alt="Miniatura Mnemba 6" loading="lazy" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Atol Mnemba</h3>
@@ -1648,6 +2037,37 @@
                       <p>To wycieczka dla tych, którzy chcą nie tylko zobaczyć Zanzibar, ale przede wszystkim poczuć jego kolory, smaki i wyjątkową atmosferę. 🌴💙</p>
                       <p class="experience-note">Pobyt na sandbanku odbywają się w zależności od pływów.</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z wycieczki na Atol Mnemba (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" data-alt="Atol Mnemba – turkusowa woda i rafa koralowa" aria-label="Powiększ zdjęcie 1 Mnemba">
+                            <img src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" alt="Mnemba 1" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" data-alt="Atol Mnemba – błękit oceanu i rejs ku rafom" aria-label="Powiększ zdjęcie 2 Mnemba">
+                            <img src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" alt="Mnemba 2" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" data-alt="Atol Mnemba – wyprawa łodzią na rafy" aria-label="Powiększ zdjęcie 3 Mnemba">
+                            <img src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" alt="Mnemba 3" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" data-alt="Atol Mnemba – snurkowanie i podwodny świat" aria-label="Powiększ zdjęcie 4 Mnemba">
+                            <img src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" alt="Mnemba 4" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" data-alt="Atol Mnemba – piaszczysta ławica sandbank" aria-label="Powiększ zdjęcie 5 Mnemba">
+                            <img src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" alt="Mnemba 5" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" data-alt="Atol Mnemba – turkusowe wody Oceanu Indyjskiego" aria-label="Powiększ zdjęcie 6 Mnemba">
+                            <img src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" alt="Mnemba 6" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -1657,7 +2077,6 @@
             <!-- Card 2: Prison Island (Changuu) -->
             <article class="experience-card" id="exp-card-prison-island">
               <div class="experience-img-wrap">
-                <span class="experience-number">02</span>
                 <img
                   src="https://i.ibb.co/Txy8cdTm/469324378-552213350947746-3573249026351303624-n.jpg"
                   alt="Prison Island (Changuu) – żółwie Aldabra i historia wyspy"
@@ -1690,14 +2109,38 @@
             <!-- Card 3: Stone Town -->
             <article class="experience-card" id="exp-card-stone-town">
               <div class="experience-img-wrap">
-                <span class="experience-number">03</span>
+                <span class="experience-photo-count">📷 5 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Stone Town">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Stone Town">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-stone-town"
                   src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg"
                   alt="Stone Town – historyczne serce Zanzibaru"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-stone-town">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" data-alt="Stone Town – historyczne serce Zanzibaru" aria-label="Zdjęcie 1 Stone Town">
+                  <img src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" alt="Miniatura Stone Town 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" data-alt="Stone Town – urokliwe uliczki i zakamarki" aria-label="Zdjęcie 2 Stone Town">
+                  <img src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" alt="Miniatura Stone Town 2" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" data-alt="Stone Town – zabytkowa architektura i lokalne życie" aria-label="Zdjęcie 3 Stone Town">
+                  <img src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" alt="Miniatura Stone Town 3" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" data-alt="Stone Town – kolory i klimat zanzibarskiego miasta" aria-label="Zdjęcie 4 Stone Town">
+                  <img src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" alt="Miniatura Stone Town 4" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" data-alt="Stone Town – atmosfera i zabytki wyspy" aria-label="Zdjęcie 5 Stone Town">
+                  <img src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" alt="Miniatura Stone Town 5" loading="lazy" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Stone Town</h3>
@@ -1715,6 +2158,33 @@
                       <p>To nie będzie zwykłe „zwiedzanie miasta”. Chcemy pokazać Wam Stone Town takim, jakie jest naprawdę – trochę chaotyczne, trochę tajemnicze, niezwykle kolorowe i pełne życia. ❤️</p>
                       <p>Stone Town to Zanzibar z duszą. 🌴</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry ze Stone Town (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" data-alt="Stone Town – historyczne serce Zanzibaru" aria-label="Powiększ zdjęcie 1 Stone Town">
+                            <img src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" alt="Stone Town 1" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" data-alt="Stone Town – urokliwe uliczki i zakamarki" aria-label="Powiększ zdjęcie 2 Stone Town">
+                            <img src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" alt="Stone Town 2" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" data-alt="Stone Town – zabytkowa architektura i lokalne życie" aria-label="Powiększ zdjęcie 3 Stone Town">
+                            <img src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" alt="Stone Town 3" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" data-alt="Stone Town – kolory i klimat zanzibarskiego miasta" aria-label="Powiększ zdjęcie 4 Stone Town">
+                            <img src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" alt="Stone Town 4" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" data-alt="Stone Town – atmosfera i zabytki wyspy" aria-label="Powiększ zdjęcie 5 Stone Town">
+                            <img src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" alt="Stone Town 5" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -1724,7 +2194,6 @@
             <!-- Card 4: Farma Przypraw (Spice Farm) -->
             <article class="experience-card" id="exp-card-spice-farm">
               <div class="experience-img-wrap">
-                <span class="experience-number">04</span>
                 <img
                   src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg"
                   alt="Farma Przypraw (Spice Farm) – aromatyczna podróż po Zanzibarze"
@@ -1758,7 +2227,6 @@
             <!-- Card 5: Jozani Forest -->
             <article class="experience-card" id="exp-card-jozani">
               <div class="experience-img-wrap">
-                <span class="experience-number">05</span>
                 <img
                   src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg"
                   alt="Jozani Forest – małpki Red Colobus w naturalnym lesie"
@@ -1792,9 +2260,8 @@
             <!-- Card 6: Safari Blue -->
             <article class="experience-card" id="exp-card-safari-blue">
               <div class="experience-img-wrap">
-                <span class="experience-number">06</span>
                 <img
-                  src="https://i.ibb.co/s9rtm4D8/469083711-552234300945651-4369652455536514560-n.jpg"
+                  src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg"
                   alt="Safari Blue – rejs łodzią dhow, snurkowanie i wyspa Kwale"
                   class="experience-img"
                   loading="lazy"
@@ -1827,7 +2294,6 @@
             <!-- Card 7: Mtende -->
             <article class="experience-card" id="exp-card-mtende">
               <div class="experience-img-wrap">
-                <span class="experience-number">07</span>
                 <img
                   src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg"
                   alt="Mtende – dzika, spokojna plaża otoczona klifami"
@@ -1860,7 +2326,6 @@
             <!-- Card 8: Secret Garden -->
             <article class="experience-card" id="exp-card-secret-garden">
               <div class="experience-img-wrap">
-                <span class="experience-number">08</span>
                 <img
                   src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg"
                   alt="Secret Garden – ukryta jaskinia z żółwiami"
@@ -1894,7 +2359,6 @@
             <!-- Card 9: Kuza Cave -->
             <article class="experience-card" id="exp-card-kuza-cave">
               <div class="experience-img-wrap">
-                <span class="experience-number">09</span>
                 <img
                   src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg"
                   alt="Kuza Cave – naturalny basen w wapiennej jaskini"
@@ -1927,7 +2391,6 @@
             <!-- Card 10: Kendwa -->
             <article class="experience-card" id="exp-card-kendwa">
               <div class="experience-img-wrap">
-                <span class="experience-number">10</span>
                 <img
                   src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg"
                   alt="Kendwa – zachód słońca nad Oceanem Indyjskim"
@@ -1960,7 +2423,6 @@
             <!-- Card 11: Safari Mikumi (samolotem) -->
             <article class="experience-card" id="exp-card-mikumi">
               <div class="experience-img-wrap">
-                <span class="experience-number">11</span>
                 <img
                   src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg"
                   alt="Safari w Mikumi National Park – jednodniowa wyprawa samolotem"
@@ -1996,14 +2458,35 @@
             <!-- Card 12: Wędkowanie -->
             <article class="experience-card" id="exp-card-fishing">
               <div class="experience-img-wrap">
-                <span class="experience-number">12</span>
+                <span class="experience-photo-count">📷 4 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Wędkowanie">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Wędkowanie">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
-                  src="https://i.ibb.co/jk6Y3pBW/pexels-leonardo-lamas-7001705-900x600-3377089944.jpg"
-                  alt="Wędkowanie na Zanzibarze – rejs łodzią po Oceanie Indyjskim"
-                  class="experience-img"
+                  id="exp-main-img-fishing"
+                  src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg"
+                  alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-fishing">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" data-alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim" aria-label="Zdjęcie 1 Wędkowanie">
+                  <img src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" alt="Miniatura Wędkowanie 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" data-alt="Wędkowanie na Zanzibarze – morska wyprawa łodzią" aria-label="Zdjęcie 2 Wędkowanie">
+                  <img src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" alt="Miniatura Wędkowanie 2" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" data-alt="Wędkowanie na Zanzibarze – złowiona ryba i zadowolenie" data-pos="center 20%" aria-label="Zdjęcie 3 Wędkowanie">
+                  <img src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" alt="Miniatura Wędkowanie 3" loading="lazy" style="object-position: center 20%;" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" data-alt="Wędkowanie na Zanzibarze – emocje i trofeum z oceanu" aria-label="Zdjęcie 4 Wędkowanie">
+                  <img src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" alt="Miniatura Wędkowanie 4" loading="lazy" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Wędkowanie na Zanzibarze</h3>
@@ -2021,6 +2504,29 @@
                       <p>A jeśli uda się coś złowić? To właśnie wtedy pojawia się ta prawdziwa satysfakcja – własnoręcznie złowiona ryba staje się częścią zanzibarskiej historii tego dnia. ❤️</p>
                       <p>Wędkowanie na Zanzibarze to nie tylko połów. To czas spędzony na oceanie, trochę emocji i wspomnienie, które zostaje na długo. 🌴🌊🎣</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z wędkowania na oceanie (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" data-alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim" aria-label="Powiększ zdjęcie 1 Wędkowanie">
+                            <img src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" alt="Wędkowanie 1" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" data-alt="Wędkowanie na Zanzibarze – morska wyprawa łodzią" aria-label="Powiększ zdjęcie 2 Wędkowanie">
+                            <img src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" alt="Wędkowanie 2" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" data-alt="Wędkowanie na Zanzibarze – złowiona ryba i zadowolenie" aria-label="Powiększ zdjęcie 3 Wędkowanie">
+                            <img src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" alt="Wędkowanie 3" loading="lazy" style="object-position: center 20%;" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" data-alt="Wędkowanie na Zanzibarze – emocje i trofeum z oceanu" aria-label="Powiększ zdjęcie 4 Wędkowanie">
+                            <img src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" alt="Wędkowanie 4" loading="lazy" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2030,7 +2536,6 @@
             <!-- Card 13: Spacer po lokalnej wiosce -->
             <article class="experience-card" id="exp-card-village">
               <div class="experience-img-wrap">
-                <span class="experience-number">13</span>
                 <img
                   src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg"
                   alt="Spacer po lokalnej wiosce – Zanzibar z bliska"
@@ -2065,7 +2570,6 @@
             <!-- Card 6: The Rock Restaurant -->
             <article class="experience-card" id="exp-card-therock">
               <div class="experience-img-wrap">
-                <span class="experience-number">14</span>
                 <img
                   src="https://i.ibb.co/JWjRLqVz/469074014-552214544280960-5277976993966686069-n.jpg"
                   alt="The Rock Restaurant – restauracja na oceanicznej skale"
@@ -2096,7 +2600,6 @@
             <!-- Card 7: Safari prywatnym jeepem -->
             <article class="experience-card" id="exp-card-safari">
               <div class="experience-img-wrap">
-                <span class="experience-number">15</span>
                 <img
                   src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg"
                   alt="Safari prywatnym jeepem w Tanzanii"
@@ -2126,7 +2629,6 @@
             <!-- Card 8: Zanzibar ma jeszcze wiele do odkrycia… -->
             <article class="experience-card" id="exp-card-custom">
               <div class="experience-img-wrap">
-                <span class="experience-number">16</span>
                 <img
                   src="https://i.ibb.co/xKLqgHvm/770135819-1032834699557095-3842696231338571212-n-1-2.jpg"
                   alt="Zanzibar ma jeszcze wiele do odkrycia – wycieczki szyte na miarę"
@@ -2196,6 +2698,124 @@
 
             <figure class="gallery-item">
               <img
+                src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg"
+                alt="Atol Mnemba – błękit oceanu i rejs ku rafom koralowym"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg"
+                alt="Urokliwe uliczki historycznego Stone Town"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg"
+                alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg"
+                alt="Wyprawa łodzią na Atol Mnemba"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg"
+                alt="Zabytkowa architektura i detale Stone Town"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg"
+                alt="Morska wyprawa wędkarska z załogą"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg"
+                alt="Snurkowanie przy Atolu Mnemba – bogaty podwodny świat"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <!-- Extra expandable images (fade-in staggered on click) -->
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg"
+                alt="Biały piasek sandbanku przy Atolu Mnemba"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg"
+                alt="Krystaliczne wody Oceanu Indyjskiego wokół Mnemba"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg"
+                alt="Rzeźbione zanzibarskie drzwi i kolory Stone Town"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg"
+                alt="Zwiedzanie historycznego centrum Stone Town z przewodnikiem"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg"
+                alt="Udany połów – okazała ryba z wód Zanzibaru"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
+                src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg"
+                alt="Radość i emocje po wyholowaniu ryby na oceanie"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-extra">
+              <img
                 src="https://i.ibb.co/WNR7RSW8/717103686-978206528353246-1473096310269074567-n.jpg"
                 alt="Krystaliczna woda i biały piasek Zanzibaru"
                 loading="lazy"
@@ -2203,7 +2823,7 @@
               />
             </figure>
 
-            <figure class="gallery-item">
+            <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/FqLwTgjB/717115283-978206578353241-2336001836607153990-n.jpg"
                 alt="Egzotyczna przyroda i zanzibarskie krajobrazy"
@@ -2212,7 +2832,7 @@
               />
             </figure>
 
-            <figure class="gallery-item">
+            <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/4g9KBt8k/766762555-1032834032890495-2595682031861922042-n.jpg"
                 alt="Wyprawa łodzią na oceaniczny sandbank"
@@ -2221,7 +2841,7 @@
               />
             </figure>
 
-            <figure class="gallery-item">
+            <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/JNstMTr/773521201-1032834089557156-878655570259273239-n.jpg"
                 alt="Relaks na rajskiej plaży w Uroa"
@@ -2230,7 +2850,7 @@
               />
             </figure>
 
-            <figure class="gallery-item">
+            <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/G4n2ghpy/769115898-1032834139557151-861506178160193766-n.jpg"
                 alt="Tradycyjna zanzibarska łódź dhow na oceanie"
@@ -2239,7 +2859,6 @@
               />
             </figure>
 
-            <!-- Extra expandable images (fade-in staggered on click) -->
             <figure class="gallery-item gallery-extra">
               <img
                 src="https://i.ibb.co/PsVk9XqP/771823637-1032834186223813-3912518524275386153-n.jpg"
@@ -2541,9 +3160,24 @@
       <span class="whatsapp-float-text">Napisz na WhatsApp</span>
     </a>
 
+    <!-- FULLSCREEN IMAGE LIGHTBOX -->
+    <div id="site-lightbox" class="site-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="site-lightbox-overlay" id="lightbox-overlay"></div>
+      <button type="button" class="site-lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd zdjęcia">✕</button>
+      <button type="button" class="site-lightbox-arrow site-lightbox-prev" id="lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button>
+      <button type="button" class="site-lightbox-arrow site-lightbox-next" id="lightbox-next" aria-label="Następne zdjęcie">›</button>
+      <div class="site-lightbox-content">
+        <img id="lightbox-image" class="site-lightbox-img" src="" alt="" />
+        <div class="site-lightbox-caption">
+          <span id="lightbox-desc" class="site-lightbox-desc"></span>
+          <span id="lightbox-counter" class="site-lightbox-counter"></span>
+        </div>
+      </div>
+    </div>
+
     <script>
-      // Smooth gallery expansion without jump
       document.addEventListener('DOMContentLoaded', () => {
+        // --- Gallery Expansion ---
         const galleryBtn = document.getElementById('gallery-toggle-btn');
         const galleryItems = document.querySelectorAll('.gallery-extra');
         let isExpanded = false;
@@ -2561,7 +3195,7 @@
                 item.style.display = 'inline-block';
                 setTimeout(() => {
                   item.classList.add('gallery-item-visible');
-                }, 20 + index * 30);
+                }, 20 + index * 25);
               });
               if (textMore) textMore.style.display = 'none';
               if (textLess) textLess.style.display = 'inline';
@@ -2579,7 +3213,6 @@
               if (textMore) textMore.style.display = 'inline';
               if (textLess) textLess.style.display = 'none';
 
-              // Smoothly scroll back if user is scrolled far down past gallery start
               const galeria = document.getElementById('galeria');
               if (galeria) {
                 const rect = galeria.getBoundingClientRect();
@@ -2588,6 +3221,207 @@
                 }
               }
             }
+          });
+        }
+
+        // --- Card Thumbnails & Arrows Navigation ---
+        const experienceCards = document.querySelectorAll('.experience-card');
+        experienceCards.forEach((card) => {
+          const strip = card.querySelector('.card-thumbs-strip');
+          if (!strip) return;
+
+          const targetId = strip.getAttribute('data-target');
+          const targetImg = document.getElementById(targetId);
+          const thumbs = Array.from(strip.querySelectorAll('.card-thumb-item'));
+          if (!targetImg || thumbs.length === 0) return;
+
+          let activeIndex = thumbs.findIndex((t) => t.classList.contains('active'));
+          if (activeIndex === -1) activeIndex = 0;
+
+          function switchCardImage(newIndex) {
+            if (newIndex < 0) newIndex = thumbs.length - 1;
+            if (newIndex >= thumbs.length) newIndex = 0;
+            activeIndex = newIndex;
+
+            const selectedThumb = thumbs[activeIndex];
+            const newSrc = selectedThumb.getAttribute('data-src');
+            const newAlt = selectedThumb.getAttribute('data-alt');
+            const newPos = selectedThumb.getAttribute('data-pos');
+
+            thumbs.forEach((t) => t.classList.remove('active'));
+            selectedThumb.classList.add('active');
+
+            try {
+              selectedThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } catch (err) {}
+
+            targetImg.style.opacity = '0.3';
+            targetImg.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+              targetImg.src = newSrc;
+              if (newAlt) targetImg.alt = newAlt;
+              if (newPos) {
+                targetImg.style.objectPosition = newPos;
+              } else {
+                targetImg.style.objectPosition = '';
+              }
+              targetImg.style.opacity = '1';
+              targetImg.style.transform = 'scale(1)';
+            }, 120);
+          }
+
+          // Thumbnail click handler
+          thumbs.forEach((thumb, idx) => {
+            thumb.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              switchCardImage(idx);
+            });
+          });
+
+          // Left/Right Arrow button handlers
+          const prevBtn = card.querySelector('.card-arrow-prev');
+          const nextBtn = card.querySelector('.card-arrow-next');
+
+          if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              switchCardImage(activeIndex - 1);
+            });
+          }
+
+          if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              switchCardImage(activeIndex + 1);
+            });
+          }
+        });
+
+        // --- Lightbox Modal ---
+        const lightbox = document.getElementById('site-lightbox');
+        const lightboxImg = document.getElementById('lightbox-image');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const lightboxOverlay = document.getElementById('lightbox-overlay');
+
+        let currentGalleryList = [];
+        let currentIndex = 0;
+
+        function openLightbox(list, index) {
+          if (!lightbox || !lightboxImg || !list || list.length === 0) return;
+          currentGalleryList = list;
+          currentIndex = Math.max(0, Math.min(index, list.length - 1));
+          updateLightboxContent();
+          lightbox.classList.add('active');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          if (!lightbox) return;
+          lightbox.classList.remove('active');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+          const item = currentGalleryList[currentIndex];
+          if (!item) return;
+          lightboxImg.src = item.src;
+          lightboxImg.alt = item.alt || '';
+          if (lightboxDesc) lightboxDesc.textContent = item.alt || '';
+          if (lightboxCounter) {
+            lightboxCounter.textContent = `${currentIndex + 1} / ${currentGalleryList.length}`;
+          }
+          if (lightboxPrev) lightboxPrev.style.display = currentGalleryList.length > 1 ? 'flex' : 'none';
+          if (lightboxNext) lightboxNext.style.display = currentGalleryList.length > 1 ? 'flex' : 'none';
+        }
+
+        function showNext() {
+          if (currentGalleryList.length <= 1) return;
+          currentIndex = (currentIndex + 1) % currentGalleryList.length;
+          updateLightboxContent();
+        }
+
+        function showPrev() {
+          if (currentGalleryList.length <= 1) return;
+          currentIndex = (currentIndex - 1 + currentGalleryList.length) % currentGalleryList.length;
+          updateLightboxContent();
+        }
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+        if (lightboxNext) lightboxNext.addEventListener('click', showNext);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrev);
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox || !lightbox.classList.contains('active')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'ArrowLeft') showPrev();
+        });
+
+        // 1. Hook up mini-gallery previews in experience cards
+        const tourPreviews = document.querySelectorAll('.tour-gallery-preview');
+        tourPreviews.forEach((preview) => {
+          const items = Array.from(preview.querySelectorAll('.tour-gallery-item'));
+          const imageList = items.map((it) => ({
+            src: it.getAttribute('data-src') || it.querySelector('img')?.src || '',
+            alt: it.getAttribute('data-alt') || it.querySelector('img')?.alt || ''
+          }));
+
+          items.forEach((item, idx) => {
+            item.addEventListener('click', (e) => {
+              e.preventDefault();
+              openLightbox(imageList, idx);
+            });
+          });
+        });
+
+        // 2. Hook up zoom on card main images
+        const zoomableCards = document.querySelectorAll('.experience-card');
+        zoomableCards.forEach((card) => {
+          const mainImg = card.querySelector('.zoomable-card-img');
+          const thumbs = Array.from(card.querySelectorAll('.card-thumb-item'));
+
+          if (mainImg && thumbs.length > 0) {
+            const imageList = thumbs.map((t) => ({
+              src: t.getAttribute('data-src') || '',
+              alt: t.getAttribute('data-alt') || ''
+            }));
+
+            mainImg.addEventListener('click', () => {
+              const currentSrc = mainImg.src;
+              let foundIndex = imageList.findIndex((it) => it.src === currentSrc);
+              if (foundIndex === -1) foundIndex = 0;
+              openLightbox(imageList, foundIndex);
+            });
+          }
+        });
+
+        // 3. Hook up main site Gallery grid (#galeria)
+        const galleryContainer = document.getElementById('gallery-container');
+        if (galleryContainer) {
+          const galleryFigures = Array.from(galleryContainer.querySelectorAll('.gallery-item'));
+          const siteGalleryList = galleryFigures.map((fig) => {
+            const img = fig.querySelector('img');
+            return {
+              src: img?.src || '',
+              alt: img?.alt || ''
+            };
+          });
+
+          galleryFigures.forEach((fig, index) => {
+            fig.style.cursor = 'pointer';
+            fig.addEventListener('click', () => {
+              openLightbox(siteGalleryList, index);
+            });
           });
         }
       });
