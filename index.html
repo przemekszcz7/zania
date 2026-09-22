@@ -1094,18 +1094,21 @@
         pointer-events: none;
       }
 
-      /* Fullscreen Lightbox Modal */
+      /* Fullscreen Lightbox Modal & Zoom Preview */
       .site-lightbox {
         position: fixed;
         inset: 0;
         z-index: 10000;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 24px;
+        padding: 0;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        user-select: none;
+        -webkit-user-select: none;
       }
 
       .site-lightbox.active {
@@ -1113,108 +1116,116 @@
         visibility: visible;
       }
 
+      .site-lightbox-overlay,
       .lightbox-backdrop {
         position: absolute;
         inset: 0;
-        background: rgba(8, 12, 10, 0.94);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-      }
-
-      .lightbox-content {
-        position: relative;
-        z-index: 2;
-        max-width: 92vw;
-        max-height: 90vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .lightbox-img-wrap {
-        position: relative;
-        max-width: 100%;
-        max-height: 78vh;
-        border-radius: var(--radius);
-        overflow: hidden;
-        border: 1px solid rgba(201, 161, 90, 0.4);
-        background: rgba(14, 18, 16, 0.9);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      }
-
-      .lightbox-img-wrap img {
-        display: block;
-        max-width: 100%;
-        max-height: 78vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        transition: opacity 0.2s ease;
-      }
-
-      .lightbox-caption {
-        margin-top: 14px;
-        color: #EDE6D8;
-        font-family: var(--font-serif);
-        font-size: 1.05rem;
-        text-align: center;
-        max-width: 650px;
-        line-height: 1.5;
-        font-style: italic;
-      }
-
-      .lightbox-counter {
-        margin-top: 6px;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--golden-light);
-        opacity: 0.8;
-      }
-
-      .lightbox-close {
-        position: absolute;
-        top: -46px;
-        right: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(201, 161, 90, 0.4);
-        color: var(--golden-light);
-        font-size: 20px;
+        background: rgba(6, 10, 8, 0.94);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 1;
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
       }
 
-      .lightbox-close:hover {
+      .site-lightbox-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 10;
+        background: linear-gradient(180deg, rgba(5, 8, 6, 0.85) 0%, rgba(5, 8, 6, 0) 100%);
+        pointer-events: auto;
+      }
+
+      .site-lightbox-counter-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .site-lightbox-counter,
+      .lightbox-counter {
+        font-family: var(--font-sans);
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--golden-light);
+        letter-spacing: 0.05em;
+        background: rgba(201, 161, 90, 0.15);
+        padding: 5px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(201, 161, 90, 0.3);
+      }
+
+      .site-lightbox-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .site-lightbox-action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 16px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(201, 161, 90, 0.4);
+        color: var(--golden-light);
+        font-family: var(--font-sans);
+        font-size: 0.84rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .site-lightbox-action-btn:hover {
         background: var(--golden-sand);
         color: var(--deep-charcoal);
-        transform: scale(1.08);
+        border-color: var(--golden-sand);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(201, 161, 90, 0.35);
       }
 
+      .site-lightbox-close-btn,
+      .site-lightbox-close,
+      .lightbox-close {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+
+      .site-lightbox-arrow,
       .lightbox-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 46px;
-        height: 46px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         background: rgba(14, 18, 16, 0.85);
         border: 1px solid rgba(201, 161, 90, 0.5);
         color: var(--golden-light);
-        font-size: 26px;
+        font-size: 30px;
+        line-height: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: all 0.2s ease;
+        z-index: 10;
         user-select: none;
       }
 
+      .site-lightbox-arrow:hover,
       .lightbox-nav:hover {
         background: var(--golden-sand);
         color: var(--deep-charcoal);
@@ -1222,24 +1233,121 @@
         transform: translateY(-50%) scale(1.08);
       }
 
+      .site-lightbox-prev,
       .lightbox-prev {
-        left: -64px;
+        left: 20px;
       }
 
+      .site-lightbox-next,
       .lightbox-next {
-        right: -64px;
+        right: 20px;
       }
 
-      @media (max-width: 840px) {
+      .site-lightbox-content,
+      .lightbox-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 94vw;
+        max-height: calc(100vh - 120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+      }
+
+      .site-lightbox-img-wrap,
+      .lightbox-img-wrap {
+        position: relative;
+        max-width: 90vw;
+        max-height: 74vh;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(201, 161, 90, 0.3);
+        background: rgba(10, 14, 12, 0.95);
+      }
+
+      .site-lightbox-img,
+      .lightbox-img-wrap img {
+        display: block;
+        max-width: 100%;
+        max-height: 74vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        cursor: zoom-in;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: center center;
+        will-change: transform;
+      }
+
+      .site-lightbox-img.is-zoomed {
+        cursor: grab;
+        max-width: none;
+        max-height: none;
+      }
+
+      .site-lightbox-img.is-zoomed:active {
+        cursor: grabbing;
+      }
+
+      .site-lightbox-caption,
+      .lightbox-caption {
+        margin-top: 14px;
+        color: #EDE6D8;
+        font-family: var(--font-serif);
+        font-size: 1.05rem;
+        text-align: center;
+        max-width: 720px;
+        line-height: 1.45;
+        font-style: italic;
+        padding: 0 16px;
+      }
+
+      .site-lightbox-hint {
+        margin-top: 5px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-style: normal;
+        color: rgba(229, 222, 209, 0.65);
+        letter-spacing: 0.02em;
+      }
+
+      @media (max-width: 768px) {
+        .site-lightbox-arrow,
+        .lightbox-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 24px;
+        }
+        .site-lightbox-prev,
         .lightbox-prev {
-          left: 6px;
+          left: 10px;
         }
+        .site-lightbox-next,
         .lightbox-next {
-          right: 6px;
+          right: 10px;
         }
-        .lightbox-close {
-          top: -42px;
-          right: 0;
+        .site-lightbox-header {
+          padding: 0 14px;
+          height: 54px;
+        }
+        .site-lightbox-img-wrap {
+          max-height: 68vh;
+        }
+        .site-lightbox-img {
+          max-height: 68vh;
+        }
+        .zoom-btn-text {
+          display: none;
+        }
+        .site-lightbox-hint {
+          display: none;
         }
       }
 
@@ -1267,13 +1375,30 @@
         background-color: var(--warm-ivory);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+        cursor: pointer;
       }
 
-      .gallery-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.4s var(--ease);
+      .gallery-item::after {
+        content: '🔍';
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        background: rgba(14, 18, 16, 0.85);
+        color: var(--golden-light);
+        border: 1px solid rgba(201, 161, 90, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+        pointer-events: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        z-index: 2;
       }
 
       .gallery-item:hover {
@@ -1281,8 +1406,13 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       }
 
+      .gallery-item:hover::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+
       .gallery-item:hover img {
-        transform: scale(1.04);
+        transform: scale(1.05);
       }
 
       /* Hidden extra items with smooth fade-in */
@@ -2847,13 +2977,56 @@
             <!-- Card 11: Safari Mikumi (samolotem) -->
             <article class="experience-card" id="exp-card-mikumi">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 11 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Safari Mikumi">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Safari Mikumi">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-mikumi"
                   src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg"
                   alt="Safari w Mikumi National Park – jednodniowa wyprawa samolotem"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-mikumi">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg" data-alt="Safari w Mikumi National Park – jednodniowa wyprawa samolotem" aria-label="Zdjęcie 1 Safari Mikumi">
+                  <img src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg" alt="Miniatura Safari Mikumi 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/8nddBFPL/480710221-616458501194719-6567122513868429059-n.jpg" data-alt="Safari w Tanzanii – spotkanie z dziką przyrodą" aria-label="Zdjęcie 2 Safari Mikumi">
+                  <img src="https://i.ibb.co/8nddBFPL/480710221-616458501194719-6567122513868429059-n.jpg" alt="Miniatura Safari Mikumi 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/HDVGsmh9/481198237-616458287861407-1383497283086401346-n.jpg" data-alt="Safari w Tanzanii – majestatyczne zwierzęta na sawannie" aria-label="Zdjęcie 3 Safari Mikumi">
+                  <img src="https://i.ibb.co/HDVGsmh9/481198237-616458287861407-1383497283086401346-n.jpg" alt="Miniatura Safari Mikumi 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/7dK0BPrw/481452260-616458394528063-4661226222353623792-n.jpg" data-alt="Safari w Tanzanii – dzika afrykańska przestrzeń" aria-label="Zdjęcie 4 Safari Mikumi">
+                  <img src="https://i.ibb.co/7dK0BPrw/481452260-616458394528063-4661226222353623792-n.jpg" alt="Miniatura Safari Mikumi 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/xwJwrqj/481191350-616458377861398-3064874747589260418-n.jpg" data-alt="Safari w Tanzanii – niezapomniany game drive 4x4" aria-label="Zdjęcie 5 Safari Mikumi">
+                  <img src="https://i.ibb.co/xwJwrqj/481191350-616458377861398-3064874747589260418-n.jpg" alt="Miniatura Safari Mikumi 5" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/jP8PjKmY/480689686-616458274528075-3427609258614045515-n.jpg" data-alt="Safari w Tanzanii – bliskie spotkania z naturą" aria-label="Zdjęcie 6 Safari Mikumi">
+                  <img src="https://i.ibb.co/jP8PjKmY/480689686-616458274528075-3427609258614045515-n.jpg" alt="Miniatura Safari Mikumi 6" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/hxJb79MQ/482191971-616458187861417-2331995897032604603-n.jpg" data-alt="Safari w Tanzanii – serce dzikiej Afryki" aria-label="Zdjęcie 7 Safari Mikumi">
+                  <img src="https://i.ibb.co/hxJb79MQ/482191971-616458187861417-2331995897032604603-n.jpg" alt="Miniatura Safari Mikumi 7" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/3YYpvwyY/481058100-616458291194740-2913113211713116196-n.jpg" data-alt="Safari w Tanzanii – dzikie zwierzęta w naturalnym środowisku" aria-label="Zdjęcie 8 Safari Mikumi">
+                  <img src="https://i.ibb.co/3YYpvwyY/481058100-616458291194740-2913113211713116196-n.jpg" alt="Miniatura Safari Mikumi 8" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/jvt4F9Gq/480707641-616458497861386-951293825669262547-n.jpg" data-alt="Safari w Tanzanii – krajobrazy sawanny Mikumi" aria-label="Zdjęcie 9 Safari Mikumi">
+                  <img src="https://i.ibb.co/jvt4F9Gq/480707641-616458497861386-951293825669262547-n.jpg" alt="Miniatura Safari Mikumi 9" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/NdFkT59Y/480695982-616458447861391-5351207304493372847-n.jpg" data-alt="Safari w Tanzanii – przygoda życia na sawannie" aria-label="Zdjęcie 10 Safari Mikumi">
+                  <img src="https://i.ibb.co/NdFkT59Y/480695982-616458447861391-5351207304493372847-n.jpg" alt="Miniatura Safari Mikumi 10" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" data-alt="Safari w Tanzanii – auto 4x4 i wyprawa marzeń" aria-label="Zdjęcie 11 Safari Mikumi">
+                  <img src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" alt="Miniatura Safari Mikumi 11" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Safari w Tanzanii – Mikumi National Park</h3>
@@ -2873,6 +3046,57 @@
                       <p>🌍 A jeśli Mikumi to dla Was za mało – mamy w ofercie również safari do innych parków Tanzanii, zarówno jednodniowe, jak i dłuższe wyprawy. Możemy dopasować park i program do Waszego czasu, oczekiwań i tego, jakie zwierzęta najbardziej chcielibyście zobaczyć. Tanzania oferuje ogromną różnorodność parków i krajobrazów – od południowej części kraju po słynny północny obwód safari.</p>
                       <p>Bo Zanzibar może być początkiem Waszej przygody, a Tanzania – jej najbardziej dzikim rozdziałem. ❤️🦒🌍</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Safari w Tanzanii (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg" data-alt="Safari w Mikumi National Park – jednodniowa wyprawa samolotem" aria-label="Powiększ zdjęcie 1 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/DPTDPT73/Mikumi-National-Park-1845624137.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/8nddBFPL/480710221-616458501194719-6567122513868429059-n.jpg" data-alt="Safari w Tanzanii – spotkanie z dziką przyrodą" aria-label="Powiększ zdjęcie 2 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/8nddBFPL/480710221-616458501194719-6567122513868429059-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/HDVGsmh9/481198237-616458287861407-1383497283086401346-n.jpg" data-alt="Safari w Tanzanii – majestatyczne zwierzęta na sawannie" aria-label="Powiększ zdjęcie 3 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/HDVGsmh9/481198237-616458287861407-1383497283086401346-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/7dK0BPrw/481452260-616458394528063-4661226222353623792-n.jpg" data-alt="Safari w Tanzanii – dzika afrykańska przestrzeń" aria-label="Powiększ zdjęcie 4 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/7dK0BPrw/481452260-616458394528063-4661226222353623792-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/xwJwrqj/481191350-616458377861398-3064874747589260418-n.jpg" data-alt="Safari w Tanzanii – niezapomniany game drive 4x4" aria-label="Powiększ zdjęcie 5 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/xwJwrqj/481191350-616458377861398-3064874747589260418-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 5" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/jP8PjKmY/480689686-616458274528075-3427609258614045515-n.jpg" data-alt="Safari w Tanzanii – bliskie spotkania z naturą" aria-label="Powiększ zdjęcie 6 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/jP8PjKmY/480689686-616458274528075-3427609258614045515-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 6" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/hxJb79MQ/482191971-616458187861417-2331995897032604603-n.jpg" data-alt="Safari w Tanzanii – serce dzikiej Afryki" aria-label="Powiększ zdjęcie 7 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/hxJb79MQ/482191971-616458187861417-2331995897032604603-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 7" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/3YYpvwyY/481058100-616458291194740-2913113211713116196-n.jpg" data-alt="Safari w Tanzanii – dzikie zwierzęta w naturalnym środowisku" aria-label="Powiększ zdjęcie 8 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/3YYpvwyY/481058100-616458291194740-2913113211713116196-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 8" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/jvt4F9Gq/480707641-616458497861386-951293825669262547-n.jpg" data-alt="Safari w Tanzanii – krajobrazy sawanny Mikumi" aria-label="Powiększ zdjęcie 9 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/jvt4F9Gq/480707641-616458497861386-951293825669262547-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 9" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/NdFkT59Y/480695982-616458447861391-5351207304493372847-n.jpg" data-alt="Safari w Tanzanii – przygoda życia na sawannie" aria-label="Powiększ zdjęcie 10 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/NdFkT59Y/480695982-616458447861391-5351207304493372847-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 10" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" data-alt="Safari w Tanzanii – auto 4x4 i wyprawa marzeń" aria-label="Powiększ zdjęcie 11 Safari Mikumi">
+                            <img data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Mikumi 11" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2960,13 +3184,32 @@
             <!-- Card 13: Spacer po lokalnej wiosce -->
             <article class="experience-card" id="exp-card-village">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 3 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Spacer po wiosce">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Spacer po wiosce">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-village"
                   src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg"
                   alt="Spacer po lokalnej wiosce – Zanzibar z bliska"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-village">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg" data-alt="Spacer po lokalnej wiosce – Zanzibar z bliska" aria-label="Zdjęcie 1 Spacer po wiosce">
+                  <img src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg" alt="Miniatura Spacer po wiosce 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/LX8GGHGz/494099548-3613184508978523-7672232900075413501-n.jpg" data-alt="Spacer po wiosce – mieszkańcy i lokalna kultura" aria-label="Zdjęcie 2 Spacer po wiosce">
+                  <img src="https://i.ibb.co/LX8GGHGz/494099548-3613184508978523-7672232900075413501-n.jpg" alt="Miniatura Spacer po wiosce 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/wFCV2Yzc/493905382-3613184495645191-2878817444740534441-n.jpg" data-alt="Spacer po wiosce – uśmiechy i codzienne życie" aria-label="Zdjęcie 3 Spacer po wiosce">
+                  <img src="https://i.ibb.co/wFCV2Yzc/493905382-3613184495645191-2878817444740534441-n.jpg" alt="Miniatura Spacer po wiosce 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Spacer po lokalnej wiosce – Zanzibar z bliska</h3>
@@ -2985,6 +3228,25 @@
                       <p>Bo Zanzibar to nie tylko miejsca, które fotografujemy. To przede wszystkim ludzie, ich historie, uśmiechy i codzienne życie. ❤️</p>
                       <p>I właśnie tę stronę wyspy chciałabym Wam pokazać. 🌴✨</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry ze spaceru po wiosce (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg" data-alt="Spacer po lokalnej wiosce – Zanzibar z bliska" aria-label="Powiększ zdjęcie 1 Spacer po wiosce">
+                            <img data-src="https://i.ibb.co/4RcHPtR8/469092497-552214804280934-6986483121650971080-n-1.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Spacer po wiosce 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/LX8GGHGz/494099548-3613184508978523-7672232900075413501-n.jpg" data-alt="Spacer po wiosce – mieszkańcy i lokalna kultura" aria-label="Powiększ zdjęcie 2 Spacer po wiosce">
+                            <img data-src="https://i.ibb.co/LX8GGHGz/494099548-3613184508978523-7672232900075413501-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Spacer po wiosce 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/wFCV2Yzc/493905382-3613184495645191-2878817444740534441-n.jpg" data-alt="Spacer po wiosce – uśmiechy i codzienne życie" aria-label="Powiększ zdjęcie 3 Spacer po wiosce">
+                            <img data-src="https://i.ibb.co/wFCV2Yzc/493905382-3613184495645191-2878817444740534441-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Spacer po wiosce 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -3070,13 +3332,29 @@
             <!-- Card 7: Safari prywatnym jeepem -->
             <article class="experience-card" id="exp-card-safari">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 2 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Safari prywatnym jeepem">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Safari prywatnym jeepem">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-safari"
                   src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg"
-                  alt="Safari prywatnym jeepem w Tanzanii"
-                  class="experience-img"
+                  alt="Safari prywatnym jeepem w Tanzanii – dedykowany samochód terenowy"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-safari">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg" data-alt="Safari prywatnym jeepem w Tanzanii – dedykowany samochód terenowy" aria-label="Zdjęcie 1 Safari jeep">
+                  <img src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg" alt="Miniatura Safari jeep 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" data-alt="Safari prywatnym jeepem – spotkanie z dzikimi zwierzętami" aria-label="Zdjęcie 2 Safari jeep">
+                  <img src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" alt="Miniatura Safari jeep 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Safari prywatnym jeepem</h3>
@@ -3090,6 +3368,21 @@
                     <div class="experience-expanded-content">
                       <p>Zapewniamy pełną organizację i sprawdzonych przewodników: przeloty z Zanzibaru na kontynent, zakwaterowanie w komfortowych lodgach, wyżywienie oraz ekscytujące safari fotograficzne w rytmie <em>pole pole</em>.</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z safari prywatnym jeepem (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg" data-alt="Safari prywatnym jeepem w Tanzanii – dedykowany samochód terenowy" aria-label="Powiększ zdjęcie 1 Safari jeep">
+                            <img data-src="https://i.ibb.co/6cqfKnCn/481704432-616458381194731-2291021479709478612-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari jeep 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" data-alt="Safari prywatnym jeepem – spotkanie z dzikimi zwierzętami" aria-label="Powiększ zdjęcie 2 Safari jeep">
+                            <img data-src="https://i.ibb.co/5gD9Dt9Y/481139093-616458277861408-7086340757165543063-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari jeep 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -3662,14 +3955,33 @@
     <!-- FULLSCREEN IMAGE LIGHTBOX -->
     <div id="site-lightbox" class="site-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="site-lightbox-overlay" id="lightbox-overlay"></div>
-      <button type="button" class="site-lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd zdjęcia">✕</button>
+
+      <!-- Lightbox Header Controls -->
+      <div class="site-lightbox-header">
+        <div class="site-lightbox-counter-wrap">
+          <span id="lightbox-counter" class="site-lightbox-counter"></span>
+        </div>
+        <div class="site-lightbox-actions">
+          <button type="button" class="site-lightbox-action-btn" id="lightbox-zoom-btn" aria-label="Przybliż lub oddal zdjęcie" title="Przybliż / Oddal (lub kliknij zdjęcie)">
+            <span class="zoom-btn-icon" id="zoom-btn-icon">🔍+</span>
+            <span class="zoom-btn-text" id="zoom-btn-text">Przybliż</span>
+          </button>
+          <button type="button" class="site-lightbox-action-btn site-lightbox-close-btn" id="lightbox-close" aria-label="Zamknij podgląd zdjęcia" title="Zamknij (Esc)">✕</button>
+        </div>
+      </div>
+
+      <!-- Arrow Navigation -->
       <button type="button" class="site-lightbox-arrow site-lightbox-prev" id="lightbox-prev" aria-label="Poprzednie zdjęcie">‹</button>
       <button type="button" class="site-lightbox-arrow site-lightbox-next" id="lightbox-next" aria-label="Następne zdjęcie">›</button>
-      <div class="site-lightbox-content">
-        <img id="lightbox-image" class="site-lightbox-img" src="" alt="" />
+
+      <!-- Content Stage -->
+      <div class="site-lightbox-content" id="lightbox-content">
+        <div class="site-lightbox-img-wrap" id="lightbox-img-wrap">
+          <img id="lightbox-image" class="site-lightbox-img" src="" alt="" draggable="false" />
+        </div>
         <div class="site-lightbox-caption">
-          <span id="lightbox-desc" class="site-lightbox-desc"></span>
-          <span id="lightbox-counter" class="site-lightbox-counter"></span>
+          <div id="lightbox-desc" class="site-lightbox-desc"></div>
+          <div class="site-lightbox-hint">💡 Kliknij zdjęcie lub użyj kółka myszy, aby powiększyć detale</div>
         </div>
       </div>
     </div>
@@ -3885,12 +4197,16 @@
           experienceCards.forEach((c) => cardPreloadObserver.observe(c));
         }
 
-        // --- Lightbox Modal ---
+        // --- Lightbox Modal & Zoom Engine ---
         const lightbox = document.getElementById('site-lightbox');
         const lightboxImg = document.getElementById('lightbox-image');
+        const lightboxImgWrap = document.getElementById('lightbox-img-wrap');
         const lightboxDesc = document.getElementById('lightbox-desc');
         const lightboxCounter = document.getElementById('lightbox-counter');
         const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxZoomBtn = document.getElementById('lightbox-zoom-btn');
+        const zoomBtnIcon = document.getElementById('zoom-btn-icon');
+        const zoomBtnText = document.getElementById('zoom-btn-text');
         const lightboxPrev = document.getElementById('lightbox-prev');
         const lightboxNext = document.getElementById('lightbox-next');
         const lightboxOverlay = document.getElementById('lightbox-overlay');
@@ -3898,10 +4214,131 @@
         let currentGalleryList = [];
         let currentIndex = 0;
 
+        // Zoom & Pan state
+        let zoomScale = 1;
+        let panX = 0;
+        let panY = 0;
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let hasMoved = false;
+
+        function resetZoom() {
+          zoomScale = 1;
+          panX = 0;
+          panY = 0;
+          isDragging = false;
+          hasMoved = false;
+          if (lightboxImg) {
+            lightboxImg.classList.remove('is-zoomed');
+            lightboxImg.style.transform = 'none';
+          }
+          if (zoomBtnIcon) zoomBtnIcon.textContent = '🔍+';
+          if (zoomBtnText) zoomBtnText.textContent = 'Przybliż';
+        }
+
+        function applyTransform() {
+          if (!lightboxImg) return;
+          if (zoomScale <= 1.02) {
+            resetZoom();
+            return;
+          }
+          lightboxImg.classList.add('is-zoomed');
+          lightboxImg.style.transform = `scale(${zoomScale}) translate(${panX}px, ${panY}px)`;
+          if (zoomBtnIcon) zoomBtnIcon.textContent = '🔍-';
+          if (zoomBtnText) zoomBtnText.textContent = 'Oddal';
+        }
+
+        function toggleZoom(clientX, clientY) {
+          if (zoomScale > 1.05) {
+            resetZoom();
+          } else {
+            zoomScale = 2.2;
+            if (clientX !== undefined && clientY !== undefined && lightboxImgWrap) {
+              const rect = lightboxImgWrap.getBoundingClientRect();
+              const offsetX = (clientX - (rect.left + rect.width / 2)) / rect.width;
+              const offsetY = (clientY - (rect.top + rect.height / 2)) / rect.height;
+              panX = Math.round(-offsetX * (rect.width * 0.35));
+              panY = Math.round(-offsetY * (rect.height * 0.35));
+            } else {
+              panX = 0;
+              panY = 0;
+            }
+            applyTransform();
+          }
+        }
+
+        // Pointer drag & mouse interaction
+        if (lightboxImgWrap && lightboxImg) {
+          lightboxImg.addEventListener('pointerdown', (e) => {
+            if (zoomScale <= 1.02) return;
+            isDragging = true;
+            hasMoved = false;
+            dragStartX = e.clientX - panX * zoomScale;
+            dragStartY = e.clientY - panY * zoomScale;
+            lightboxImg.setPointerCapture?.(e.pointerId);
+          });
+
+          window.addEventListener('pointermove', (e) => {
+            if (!isDragging || zoomScale <= 1.02) return;
+            hasMoved = true;
+            const currentPanX = (e.clientX - dragStartX) / zoomScale;
+            const currentPanY = (e.clientY - dragStartY) / zoomScale;
+            const maxBoundX = (lightboxImgWrap.clientWidth * (zoomScale - 1)) / (2 * zoomScale) + 60;
+            const maxBoundY = (lightboxImgWrap.clientHeight * (zoomScale - 1)) / (2 * zoomScale) + 60;
+            panX = Math.max(-maxBoundX, Math.min(maxBoundX, currentPanX));
+            panY = Math.max(-maxBoundY, Math.min(maxBoundY, currentPanY));
+            applyTransform();
+          });
+
+          window.addEventListener('pointerup', (e) => {
+            if (isDragging) {
+              isDragging = false;
+              lightboxImg.releasePointerCapture?.(e.pointerId);
+            }
+          });
+
+          // Wheel zoom
+          lightboxImgWrap.addEventListener(
+            'wheel',
+            (e) => {
+              e.preventDefault();
+              const delta = e.deltaY < 0 ? 0.3 : -0.3;
+              const newScale = Math.max(1, Math.min(3.5, zoomScale + delta));
+              if (newScale <= 1.05) {
+                resetZoom();
+              } else {
+                zoomScale = newScale;
+                applyTransform();
+              }
+            },
+            { passive: false }
+          );
+
+          // Click on image to toggle zoom
+          lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (hasMoved) {
+              hasMoved = false;
+              return;
+            }
+            toggleZoom(e.clientX, e.clientY);
+          });
+        }
+
+        if (lightboxZoomBtn) {
+          lightboxZoomBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleZoom();
+          });
+        }
+
         function openLightbox(list, index) {
           if (!lightbox || !lightboxImg || !list || list.length === 0) return;
           currentGalleryList = list;
           currentIndex = Math.max(0, Math.min(index, list.length - 1));
+          resetZoom();
           updateLightboxContent();
           lightbox.classList.add('active');
           lightbox.setAttribute('aria-hidden', 'false');
@@ -3910,6 +4347,7 @@
 
         function closeLightbox() {
           if (!lightbox) return;
+          resetZoom();
           lightbox.classList.remove('active');
           lightbox.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
@@ -3918,6 +4356,7 @@
         function updateLightboxContent() {
           const item = currentGalleryList[currentIndex];
           if (!item) return;
+          resetZoom();
           lightboxImg.src = item.src;
           lightboxImg.alt = item.alt || '';
           if (lightboxDesc) lightboxDesc.textContent = item.alt || '';
@@ -3942,15 +4381,53 @@
 
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
         if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
-        if (lightboxNext) lightboxNext.addEventListener('click', showNext);
-        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrev);
+        if (lightboxNext) lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+        if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
 
         document.addEventListener('keydown', (e) => {
           if (!lightbox || !lightbox.classList.contains('active')) return;
-          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'Escape') {
+            if (zoomScale > 1.05) {
+              resetZoom();
+            } else {
+              closeLightbox();
+            }
+          }
           if (e.key === 'ArrowRight') showNext();
           if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === '+' || e.key === '=') {
+            zoomScale = Math.min(3.5, zoomScale + 0.5);
+            applyTransform();
+          }
+          if (e.key === '-') {
+            zoomScale = Math.max(1, zoomScale - 0.5);
+            if (zoomScale <= 1.05) resetZoom();
+            else applyTransform();
+          }
+          if (e.key === '0') resetZoom();
         });
+
+        // Touch swipe on mobile when not zoomed in
+        let touchStartX = 0;
+        let touchStartY = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+          }
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+          if (zoomScale > 1.05) return; // Allow pinch / pan when zoomed
+          if (e.changedTouches.length === 1) {
+            const diffX = e.changedTouches[0].clientX - touchStartX;
+            const diffY = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+              if (diffX < 0) showNext();
+              else showPrev();
+            }
+          }
+        }, { passive: true });
 
         // 1. Hook up mini-gallery previews in experience cards
         const tourPreviews = document.querySelectorAll('.tour-gallery-preview');
@@ -4003,7 +4480,6 @@
           });
 
           galleryFigures.forEach((fig, index) => {
-            fig.style.cursor = 'pointer';
             fig.addEventListener('click', () => {
               openLightbox(siteGalleryList, index);
             });
