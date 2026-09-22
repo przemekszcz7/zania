@@ -28,12 +28,12 @@
     />
 
     <!-- Fast Image CDN Preconnect & Hero Preload -->
-    <link rel="preconnect" href="https://i.ibb.co" crossorigin />
+    <link rel="preconnect" href="https://i.ibb.co" />
     <link rel="dns-prefetch" href="https://i.ibb.co" />
     <link
       rel="preload"
       as="image"
-      href="https://i.ibb.co/ymFnBcCy/481032139-616842084489694-6965225212112104810-n.webp"
+      href="https://i.ibb.co/4w696m8k/z30252664-AMP-Zanzibar.webp"
       fetchpriority="high"
     />
 
@@ -738,7 +738,14 @@
         position: relative;
         height: 400px;
         overflow: hidden;
-        background-color: var(--tropical-dark);
+        background: linear-gradient(110deg, #162b23 8%, #224235 18%, #162b23 33%);
+        background-size: 200% 100%;
+        animation: img-shimmer 2.2s infinite ease-in-out;
+      }
+
+      @keyframes img-shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
       }
 
       .experience-img {
@@ -746,7 +753,13 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
-        transition: transform 0.4s var(--ease);
+        transition: transform 0.4s var(--ease), opacity 0.18s ease;
+        will-change: transform, opacity;
+      }
+
+      .experience-img.img-switching {
+        opacity: 0.55;
+        transform: scale(0.988);
       }
 
       .experience-card:hover .experience-img {
@@ -2005,19 +2018,19 @@
                   <img src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" alt="Miniatura Mnemba 1" loading="lazy" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" data-alt="Atol Mnemba – błękit oceanu i rejs ku rafom" aria-label="Zdjęcie 2 Atol Mnemba">
-                  <img src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" alt="Miniatura Mnemba 2" loading="lazy" />
+                  <img src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" alt="Miniatura Mnemba 2" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" data-alt="Atol Mnemba – wyprawa łodzią na rafy" aria-label="Zdjęcie 3 Atol Mnemba">
-                  <img src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" alt="Miniatura Mnemba 3" loading="lazy" />
+                  <img src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" alt="Miniatura Mnemba 3" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" data-alt="Atol Mnemba – snurkowanie i podwodny świat" aria-label="Zdjęcie 4 Atol Mnemba">
-                  <img src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" alt="Miniatura Mnemba 4" loading="lazy" />
+                  <img src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" alt="Miniatura Mnemba 4" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" data-alt="Atol Mnemba – piaszczysta ławica sandbank" aria-label="Zdjęcie 5 Atol Mnemba">
-                  <img src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" alt="Miniatura Mnemba 5" loading="lazy" />
+                  <img src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" alt="Miniatura Mnemba 5" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" data-alt="Atol Mnemba – turkusowe wody Oceanu Indyjskiego" aria-label="Zdjęcie 6 Atol Mnemba">
-                  <img src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" alt="Miniatura Mnemba 6" loading="lazy" />
+                  <img src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" alt="Miniatura Mnemba 6" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
               </div>
               <div class="experience-body">
@@ -2043,27 +2056,27 @@
                         <span class="tour-gallery-label">✦ Kadry z wycieczki na Atol Mnemba (kliknij, aby powiększyć):</span>
                         <div class="tour-gallery-grid">
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" data-alt="Atol Mnemba – turkusowa woda i rafa koralowa" aria-label="Powiększ zdjęcie 1 Mnemba">
-                            <img src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" alt="Mnemba 1" loading="lazy" />
+                            <img data-src="https://i.ibb.co/wN5sBnZP/469362710-552214310947650-5114613583225651672-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 1" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" data-alt="Atol Mnemba – błękit oceanu i rejs ku rafom" aria-label="Powiększ zdjęcie 2 Mnemba">
-                            <img src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" alt="Mnemba 2" loading="lazy" />
+                            <img data-src="https://i.ibb.co/gL05fjTd/Whats-App-Image-2026-09-14-at-14-06-43.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 2" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" data-alt="Atol Mnemba – wyprawa łodzią na rafy" aria-label="Powiększ zdjęcie 3 Mnemba">
-                            <img src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" alt="Mnemba 3" loading="lazy" />
+                            <img data-src="https://i.ibb.co/C5gDmJm8/Whats-App-Image-2026-09-14-at-14-04-20.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 3" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" data-alt="Atol Mnemba – snurkowanie i podwodny świat" aria-label="Powiększ zdjęcie 4 Mnemba">
-                            <img src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" alt="Mnemba 4" loading="lazy" />
+                            <img data-src="https://i.ibb.co/DHQ4qxWD/Whats-App-Image-2026-09-14-at-14-02-42.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 4" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" data-alt="Atol Mnemba – piaszczysta ławica sandbank" aria-label="Powiększ zdjęcie 5 Mnemba">
-                            <img src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" alt="Mnemba 5" loading="lazy" />
+                            <img data-src="https://i.ibb.co/ycdfZWT9/Whats-App-Image-2026-09-14-at-14-01-44.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 5" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" data-alt="Atol Mnemba – turkusowe wody Oceanu Indyjskiego" aria-label="Powiększ zdjęcie 6 Mnemba">
-                            <img src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" alt="Mnemba 6" loading="lazy" />
+                            <img data-src="https://i.ibb.co/DD2ktNTV/Whats-App-Image-2026-09-14-at-14-01-38.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mnemba 6" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                         </div>
@@ -2077,13 +2090,41 @@
             <!-- Card 2: Prison Island (Changuu) -->
             <article class="experience-card" id="exp-card-prison-island">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 6 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Prison Island">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Prison Island">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
-                  src="https://i.ibb.co/Txy8cdTm/469324378-552213350947746-3573249026351303624-n.jpg"
+                  id="exp-main-img-prison-island"
+                  src="https://i.ibb.co/DDtxzQHm/Whats-App-Image-2026-09-20-at-14-13-17.jpg"
                   alt="Prison Island (Changuu) – żółwie Aldabra i historia wyspy"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-prison-island">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/DDtxzQHm/Whats-App-Image-2026-09-20-at-14-13-17.jpg" data-alt="Prison Island – żółwie Aldabra na Changuu" aria-label="Zdjęcie 1 Prison Island">
+                  <img src="https://i.ibb.co/DDtxzQHm/Whats-App-Image-2026-09-20-at-14-13-17.jpg" alt="Miniatura Prison Island 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/yn5xFCs3/Whats-App-Image-2026-09-20-at-14-08-34.jpg" data-alt="Prison Island – olbrzymie żółwie w rezerwacie" aria-label="Zdjęcie 2 Prison Island">
+                  <img src="https://i.ibb.co/yn5xFCs3/Whats-App-Image-2026-09-20-at-14-08-34.jpg" alt="Miniatura Prison Island 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/wZhC8VtC/Whats-App-Image-2026-09-20-at-14-08-20.jpg" data-alt="Prison Island – spotkanie z żółwiami olbrzymimi" aria-label="Zdjęcie 3 Prison Island">
+                  <img src="https://i.ibb.co/wZhC8VtC/Whats-App-Image-2026-09-20-at-14-08-20.jpg" alt="Miniatura Prison Island 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/TMmKCbrC/Whats-App-Image-2026-09-20-at-13-53-01-2.jpg" data-alt="Prison Island – turkusowe wody i widok na plażę" aria-label="Zdjęcie 4 Prison Island">
+                  <img src="https://i.ibb.co/TMmKCbrC/Whats-App-Image-2026-09-20-at-13-53-01-2.jpg" alt="Miniatura Prison Island 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/d0CVjR0F/Whats-App-Image-2026-09-20-at-13-53-01-1.jpg" data-alt="Prison Island – krajobraz wyspy Changuu" aria-label="Zdjęcie 5 Prison Island">
+                  <img src="https://i.ibb.co/d0CVjR0F/Whats-App-Image-2026-09-20-at-13-53-01-1.jpg" alt="Miniatura Prison Island 5" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/TMw31m64/Whats-App-Image-2026-09-20-at-13-53-01.jpg" data-alt="Prison Island – zabytkowe zabudowania i historia wyspy" aria-label="Zdjęcie 6 Prison Island">
+                  <img src="https://i.ibb.co/TMw31m64/Whats-App-Image-2026-09-20-at-13-53-01.jpg" alt="Miniatura Prison Island 6" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Prison Island</h3>
@@ -2100,6 +2141,37 @@
                       <p>Prison Island to jednak nie tylko historia i żółwie. Wyspa zachwyca turkusową wodą, białym piaskiem i pięknymi widokami na Ocean Indyjski. 🌴🌊 Jest również świetnym miejscem na chwilę odpoczynku i zdjęcia w prawdziwie zanzibarskiej scenerii.</p>
                       <p>To spokojna, pełna ciekawostek wycieczka, podczas której poznajemy Zanzibar z nieco innej strony – jego historię, przyrodę i piękno oceanu. 💙</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z wycieczki na Prison Island (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/DDtxzQHm/Whats-App-Image-2026-09-20-at-14-13-17.jpg" data-alt="Prison Island – żółwie Aldabra na Changuu" aria-label="Powiększ zdjęcie 1 Prison Island">
+                            <img data-src="https://i.ibb.co/DDtxzQHm/Whats-App-Image-2026-09-20-at-14-13-17.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/yn5xFCs3/Whats-App-Image-2026-09-20-at-14-08-34.jpg" data-alt="Prison Island – olbrzymie żółwie w rezerwacie" aria-label="Powiększ zdjęcie 2 Prison Island">
+                            <img data-src="https://i.ibb.co/yn5xFCs3/Whats-App-Image-2026-09-20-at-14-08-34.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/wZhC8VtC/Whats-App-Image-2026-09-20-at-14-08-20.jpg" data-alt="Prison Island – spotkanie z żółwiami olbrzymimi" aria-label="Powiększ zdjęcie 3 Prison Island">
+                            <img data-src="https://i.ibb.co/wZhC8VtC/Whats-App-Image-2026-09-20-at-14-08-20.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/TMmKCbrC/Whats-App-Image-2026-09-20-at-13-53-01-2.jpg" data-alt="Prison Island – turkusowe wody i widok na plażę" aria-label="Powiększ zdjęcie 4 Prison Island">
+                            <img data-src="https://i.ibb.co/TMmKCbrC/Whats-App-Image-2026-09-20-at-13-53-01-2.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/d0CVjR0F/Whats-App-Image-2026-09-20-at-13-53-01-1.jpg" data-alt="Prison Island – krajobraz wyspy Changuu" aria-label="Powiększ zdjęcie 5 Prison Island">
+                            <img data-src="https://i.ibb.co/d0CVjR0F/Whats-App-Image-2026-09-20-at-13-53-01-1.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 5" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/TMw31m64/Whats-App-Image-2026-09-20-at-13-53-01.jpg" data-alt="Prison Island – zabytkowe zabudowania i historia wyspy" aria-label="Powiększ zdjęcie 6 Prison Island">
+                            <img data-src="https://i.ibb.co/TMw31m64/Whats-App-Image-2026-09-20-at-13-53-01.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Prison Island 6" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2130,16 +2202,16 @@
                   <img src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" alt="Miniatura Stone Town 1" loading="lazy" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" data-alt="Stone Town – urokliwe uliczki i zakamarki" aria-label="Zdjęcie 2 Stone Town">
-                  <img src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" alt="Miniatura Stone Town 2" loading="lazy" />
+                  <img src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" alt="Miniatura Stone Town 2" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" data-alt="Stone Town – zabytkowa architektura i lokalne życie" aria-label="Zdjęcie 3 Stone Town">
-                  <img src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" alt="Miniatura Stone Town 3" loading="lazy" />
+                  <img src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" alt="Miniatura Stone Town 3" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" data-alt="Stone Town – kolory i klimat zanzibarskiego miasta" aria-label="Zdjęcie 4 Stone Town">
-                  <img src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" alt="Miniatura Stone Town 4" loading="lazy" />
+                  <img src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" alt="Miniatura Stone Town 4" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" data-alt="Stone Town – atmosfera i zabytki wyspy" aria-label="Zdjęcie 5 Stone Town">
-                  <img src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" alt="Miniatura Stone Town 5" loading="lazy" />
+                  <img src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" alt="Miniatura Stone Town 5" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
               </div>
               <div class="experience-body">
@@ -2164,23 +2236,23 @@
                         <span class="tour-gallery-label">✦ Kadry ze Stone Town (kliknij, aby powiększyć):</span>
                         <div class="tour-gallery-grid">
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" data-alt="Stone Town – historyczne serce Zanzibaru" aria-label="Powiększ zdjęcie 1 Stone Town">
-                            <img src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" alt="Stone Town 1" loading="lazy" />
+                            <img data-src="https://i.ibb.co/YBvK9HjJ/481250534-617405644433338-6500179267211599671-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Stone Town 1" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" data-alt="Stone Town – urokliwe uliczki i zakamarki" aria-label="Powiększ zdjęcie 2 Stone Town">
-                            <img src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" alt="Stone Town 2" loading="lazy" />
+                            <img data-src="https://i.ibb.co/PZqq4jzX/Whats-App-Image-2026-09-14-at-14-08-46-4.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Stone Town 2" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" data-alt="Stone Town – zabytkowa architektura i lokalne życie" aria-label="Powiększ zdjęcie 3 Stone Town">
-                            <img src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" alt="Stone Town 3" loading="lazy" />
+                            <img data-src="https://i.ibb.co/4g4r1KkC/Whats-App-Image-2026-09-14-at-14-08-46-3.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Stone Town 3" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" data-alt="Stone Town – kolory i klimat zanzibarskiego miasta" aria-label="Powiększ zdjęcie 4 Stone Town">
-                            <img src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" alt="Stone Town 4" loading="lazy" />
+                            <img data-src="https://i.ibb.co/nqkD5ssh/Whats-App-Image-2026-09-14-at-14-08-46-1.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Stone Town 4" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" data-alt="Stone Town – atmosfera i zabytki wyspy" aria-label="Powiększ zdjęcie 5 Stone Town">
-                            <img src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" alt="Stone Town 5" loading="lazy" />
+                            <img data-src="https://i.ibb.co/hxDCz42z/Whats-App-Image-2026-09-14-at-14-08-46.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Stone Town 5" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                         </div>
@@ -2194,13 +2266,35 @@
             <!-- Card 4: Farma Przypraw (Spice Farm) -->
             <article class="experience-card" id="exp-card-spice-farm">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 4 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Farma Przypraw">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Farma Przypraw">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-spice-farm"
                   src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg"
                   alt="Farma Przypraw (Spice Farm) – aromatyczna podróż po Zanzibarze"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-spice-farm">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg" data-alt="Farma Przypraw – aromatyczna podróż po Zanzibarze" aria-label="Zdjęcie 1 Farma Przypraw">
+                  <img src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg" alt="Miniatura Farma Przypraw 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/5gy5qXLg/481094972-617405597766676-5037678090053441281-n.jpg" data-alt="Farma Przypraw – świeże przyprawy i rośliny Zanzibaru" aria-label="Zdjęcie 2 Farma Przypraw">
+                  <img src="https://i.ibb.co/5gy5qXLg/481094972-617405597766676-5037678090053441281-n.jpg" alt="Miniatura Farma Przypraw 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/ZpgJVq50/469174621-552213277614420-725745066102910985-n.jpg" data-alt="Farma Przypraw – tropikalne owoce i zapachy" aria-label="Zdjęcie 3 Farma Przypraw">
+                  <img src="https://i.ibb.co/ZpgJVq50/469174621-552213277614420-725745066102910985-n.jpg" alt="Miniatura Farma Przypraw 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/Zpd0LXvL/469029680-552213300947751-6278393669279521149-n.jpg" data-alt="Farma Przypraw – tradycyjna plantacja na Zanzibarze" aria-label="Zdjęcie 4 Farma Przypraw">
+                  <img src="https://i.ibb.co/Zpd0LXvL/469029680-552213300947751-6278393669279521149-n.jpg" alt="Miniatura Farma Przypraw 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Farma Przypraw (Spice Farm)</h3>
@@ -2218,6 +2312,29 @@
                       <p>Na koniec będzie również możliwość zakupu świeżych zanzibarskich przypraw, dzięki czemu kawałek zapachu i smaku wyspy można zabrać ze sobą do domu. ❤️</p>
                       <p>To wycieczka dla wszystkich, którzy chcą nie tylko zobaczyć Zanzibar, ale również go poczuć, powąchać i posmakować. 🌴✨</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Farmy Przypraw (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg" data-alt="Farma Przypraw – aromatyczna podróż po Zanzibarze" aria-label="Powiększ zdjęcie 1 Farma Przypraw">
+                            <img data-src="https://i.ibb.co/xqhqNCYK/482321466-617405667766669-109008437167060191-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Farma Przypraw 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/5gy5qXLg/481094972-617405597766676-5037678090053441281-n.jpg" data-alt="Farma Przypraw – świeże przyprawy i rośliny Zanzibaru" aria-label="Powiększ zdjęcie 2 Farma Przypraw">
+                            <img data-src="https://i.ibb.co/5gy5qXLg/481094972-617405597766676-5037678090053441281-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Farma Przypraw 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/ZpgJVq50/469174621-552213277614420-725745066102910985-n.jpg" data-alt="Farma Przypraw – tropikalne owoce i zapachy" aria-label="Powiększ zdjęcie 3 Farma Przypraw">
+                            <img data-src="https://i.ibb.co/ZpgJVq50/469174621-552213277614420-725745066102910985-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Farma Przypraw 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/Zpd0LXvL/469029680-552213300947751-6278393669279521149-n.jpg" data-alt="Farma Przypraw – tradycyjna plantacja na Zanzibarze" aria-label="Powiększ zdjęcie 4 Farma Przypraw">
+                            <img data-src="https://i.ibb.co/Zpd0LXvL/469029680-552213300947751-6278393669279521149-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Farma Przypraw 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2227,13 +2344,38 @@
             <!-- Card 5: Jozani Forest -->
             <article class="experience-card" id="exp-card-jozani">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 5 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Jozani Forest">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Jozani Forest">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-jozani"
                   src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg"
                   alt="Jozani Forest – małpki Red Colobus w naturalnym lesie"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-jozani">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg" data-alt="Jozani Forest – małpki Red Colobus w naturalnym lesie" aria-label="Zdjęcie 1 Jozani Forest">
+                  <img src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg" alt="Miniatura Jozani Forest 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/qMQCG6RH/469041470-552214794280935-8225557236421759781-n.jpg" data-alt="Jozani Forest – gerezy rude w koronach drzew" aria-label="Zdjęcie 2 Jozani Forest">
+                  <img src="https://i.ibb.co/qMQCG6RH/469041470-552214794280935-8225557236421759781-n.jpg" alt="Miniatura Jozani Forest 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/BHWZx1bV/469118191-552214727614275-7088083203480609872-n.jpg" data-alt="Jozani Forest – tropikalna roślinność i spacer ścieżką" aria-label="Zdjęcie 3 Jozani Forest">
+                  <img src="https://i.ibb.co/BHWZx1bV/469118191-552214727614275-7088083203480609872-n.jpg" alt="Miniatura Jozani Forest 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/HpPyZsg5/469139080-552214704280944-5765359913341989911-n.jpg" data-alt="Jozani Forest – niezwykły ekosystem zanzibarskiego lasu" aria-label="Zdjęcie 4 Jozani Forest">
+                  <img src="https://i.ibb.co/HpPyZsg5/469139080-552214704280944-5765359913341989911-n.jpg" alt="Miniatura Jozani Forest 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/6RzxF0G6/469033093-552214730947608-4620397492597252971-n.jpg" data-alt="Jozani Forest – unikalna przyroda i dzikie zwierzęta" aria-label="Zdjęcie 5 Jozani Forest">
+                  <img src="https://i.ibb.co/6RzxF0G6/469033093-552214730947608-4620397492597252971-n.jpg" alt="Miniatura Jozani Forest 5" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Jozani Forest</h3>
@@ -2251,6 +2393,33 @@
                       <p>Jozani to nie jest zoo ani miejsce, w którym zwierzęta czekają na turystów. To spotkanie z naturą, podczas którego to my jesteśmy gośćmi w ich świecie. ❤️</p>
                       <p>To idealna propozycja dla osób, które podczas pobytu na Zanzibarze chcą zobaczyć coś więcej niż tylko piękne plaże. 🌴🐒</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Jozani Forest (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg" data-alt="Jozani Forest – małpki Red Colobus w naturalnym lesie" aria-label="Powiększ zdjęcie 1 Jozani Forest">
+                            <img data-src="https://i.ibb.co/m56NL8rp/469082307-552236040945477-3120601507954271993-n-1.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Jozani Forest 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/qMQCG6RH/469041470-552214794280935-8225557236421759781-n.jpg" data-alt="Jozani Forest – gerezy rude w koronach drzew" aria-label="Powiększ zdjęcie 2 Jozani Forest">
+                            <img data-src="https://i.ibb.co/qMQCG6RH/469041470-552214794280935-8225557236421759781-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Jozani Forest 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/BHWZx1bV/469118191-552214727614275-7088083203480609872-n.jpg" data-alt="Jozani Forest – tropikalna roślinność i spacer ścieżką" aria-label="Powiększ zdjęcie 3 Jozani Forest">
+                            <img data-src="https://i.ibb.co/BHWZx1bV/469118191-552214727614275-7088083203480609872-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Jozani Forest 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/HpPyZsg5/469139080-552214704280944-5765359913341989911-n.jpg" data-alt="Jozani Forest – niezwykły ekosystem zanzibarskiego lasu" aria-label="Powiększ zdjęcie 4 Jozani Forest">
+                            <img data-src="https://i.ibb.co/HpPyZsg5/469139080-552214704280944-5765359913341989911-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Jozani Forest 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/6RzxF0G6/469033093-552214730947608-4620397492597252971-n.jpg" data-alt="Jozani Forest – unikalna przyroda i dzikie zwierzęta" aria-label="Powiększ zdjęcie 5 Jozani Forest">
+                            <img data-src="https://i.ibb.co/6RzxF0G6/469033093-552214730947608-4620397492597252971-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Jozani Forest 5" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2260,13 +2429,47 @@
             <!-- Card 6: Safari Blue -->
             <article class="experience-card" id="exp-card-safari-blue">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 8 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Safari Blue">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Safari Blue">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-safari-blue"
                   src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg"
                   alt="Safari Blue – rejs łodzią dhow, snurkowanie i wyspa Kwale"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-safari-blue">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg" data-alt="Safari Blue – rejs łodzią dhow, snurkowanie i wyspa Kwale" aria-label="Zdjęcie 1 Safari Blue">
+                  <img src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg" alt="Miniatura Safari Blue 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/twPp7QKy/469182421-552214430947638-6695138788630971461-n.jpg" data-alt="Safari Blue – krystaliczna błękitna laguna" aria-label="Zdjęcie 2 Safari Blue">
+                  <img src="https://i.ibb.co/twPp7QKy/469182421-552214430947638-6695138788630971461-n.jpg" alt="Miniatura Safari Blue 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/s9VHZ9fT/469110338-552214860947595-398568284873376516-n.jpg" data-alt="Safari Blue – tradycyjna łódź dhow na oceanie" aria-label="Zdjęcie 3 Safari Blue">
+                  <img src="https://i.ibb.co/s9VHZ9fT/469110338-552214860947595-398568284873376516-n.jpg" alt="Miniatura Safari Blue 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/VYFq8v5v/469301403-552214914280923-6352575773947668680-n.jpg" data-alt="Safari Blue – snurkowanie i rafa koralowa" aria-label="Zdjęcie 4 Safari Blue">
+                  <img src="https://i.ibb.co/VYFq8v5v/469301403-552214914280923-6352575773947668680-n.jpg" alt="Miniatura Safari Blue 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/rK9bzGt9/469360717-552214897614258-566974771368612897-n.jpg" data-alt="Safari Blue – wypoczynek na piaszczystej ławicy" aria-label="Zdjęcie 5 Safari Blue">
+                  <img src="https://i.ibb.co/rK9bzGt9/469360717-552214897614258-566974771368612897-n.jpg" alt="Miniatura Safari Blue 5" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/SXXSZtds/469213692-552214760947605-6521981716313007744-n.jpg" data-alt="Safari Blue – wiekowy baobab na wyspie Kwale" aria-label="Zdjęcie 6 Safari Blue">
+                  <img src="https://i.ibb.co/SXXSZtds/469213692-552214760947605-6521981716313007744-n.jpg" alt="Miniatura Safari Blue 6" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/N6FpBYLM/469018359-552214850947596-6201277479773515651-n.jpg" data-alt="Safari Blue – owoce morza i lokalny lunch" aria-label="Zdjęcie 7 Safari Blue">
+                  <img src="https://i.ibb.co/N6FpBYLM/469018359-552214850947596-6201277479773515651-n.jpg" alt="Miniatura Safari Blue 7" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/d0TgnvJf/469188800-552214377614310-1746340480654312428-n.jpg" data-alt="Safari Blue – rajski klimat Oceanu Indyjskiego" aria-label="Zdjęcie 8 Safari Blue">
+                  <img src="https://i.ibb.co/d0TgnvJf/469188800-552214377614310-1746340480654312428-n.jpg" alt="Miniatura Safari Blue 8" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Safari Blue</h3>
@@ -2285,6 +2488,45 @@
                       <p>Będzie również czas, aby spokojnie zajrzeć do lokalnych stoisk i kupić zanzibarskie pamiątki – rękodzieło, drobiazgi i rzeczy, które pozwolą zabrać ze sobą kawałek wyspy do domu. ❤️</p>
                       <p>Safari Blue to dzień pełen słońca, oceanu, smaków i pięknych chwil – bez pośpiechu, za to z prawdziwym zanzibarskim klimatem. 🌊🌴</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Safari Blue (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg" data-alt="Safari Blue – rejs łodzią dhow, snurkowanie i wyspa Kwale" aria-label="Powiększ zdjęcie 1 Safari Blue">
+                            <img data-src="https://i.ibb.co/RkpR9jTK/469091763-552214580947623-2308388720579464955-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/twPp7QKy/469182421-552214430947638-6695138788630971461-n.jpg" data-alt="Safari Blue – krystaliczna błękitna laguna" aria-label="Powiększ zdjęcie 2 Safari Blue">
+                            <img data-src="https://i.ibb.co/twPp7QKy/469182421-552214430947638-6695138788630971461-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/s9VHZ9fT/469110338-552214860947595-398568284873376516-n.jpg" data-alt="Safari Blue – tradycyjna łódź dhow na oceanie" aria-label="Powiększ zdjęcie 3 Safari Blue">
+                            <img data-src="https://i.ibb.co/s9VHZ9fT/469110338-552214860947595-398568284873376516-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/VYFq8v5v/469301403-552214914280923-6352575773947668680-n.jpg" data-alt="Safari Blue – snurkowanie i rafa koralowa" aria-label="Powiększ zdjęcie 4 Safari Blue">
+                            <img data-src="https://i.ibb.co/VYFq8v5v/469301403-552214914280923-6352575773947668680-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/rK9bzGt9/469360717-552214897614258-566974771368612897-n.jpg" data-alt="Safari Blue – wypoczynek na piaszczystej ławicy" aria-label="Powiększ zdjęcie 5 Safari Blue">
+                            <img data-src="https://i.ibb.co/rK9bzGt9/469360717-552214897614258-566974771368612897-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 5" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/SXXSZtds/469213692-552214760947605-6521981716313007744-n.jpg" data-alt="Safari Blue – wiekowy baobab na wyspie Kwale" aria-label="Powiększ zdjęcie 6 Safari Blue">
+                            <img data-src="https://i.ibb.co/SXXSZtds/469213692-552214760947605-6521981716313007744-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 6" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/N6FpBYLM/469018359-552214850947596-6201277479773515651-n.jpg" data-alt="Safari Blue – owoce morza i lokalny lunch" aria-label="Powiększ zdjęcie 7 Safari Blue">
+                            <img data-src="https://i.ibb.co/N6FpBYLM/469018359-552214850947596-6201277479773515651-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 7" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/d0TgnvJf/469188800-552214377614310-1746340480654312428-n.jpg" data-alt="Safari Blue – rajski klimat Oceanu Indyjskiego" aria-label="Powiększ zdjęcie 8 Safari Blue">
+                            <img data-src="https://i.ibb.co/d0TgnvJf/469188800-552214377614310-1746340480654312428-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Safari Blue 8" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2294,13 +2536,32 @@
             <!-- Card 7: Mtende -->
             <article class="experience-card" id="exp-card-mtende">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 3 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Mtende">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Mtende">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-mtende"
                   src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg"
                   alt="Mtende – dzika, spokojna plaża otoczona klifami"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-mtende">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg" data-alt="Mtende – dzika, spokojna plaża otoczona klifami" aria-label="Zdjęcie 1 Mtende">
+                  <img src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg" alt="Miniatura Mtende 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/yFNVvC2M/Whats-App-Image-2026-09-20-at-14-10-38.jpg" data-alt="Mtende – turkusowy ocean i spektakularne klify" aria-label="Zdjęcie 2 Mtende">
+                  <img src="https://i.ibb.co/yFNVvC2M/Whats-App-Image-2026-09-20-at-14-10-38.jpg" alt="Miniatura Mtende 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/bM3JqB0y/Whats-App-Image-2026-09-20-at-14-10-25.jpg" data-alt="Mtende – naturalna plaża i odpływ na Zanzibarze" aria-label="Zdjęcie 3 Mtende">
+                  <img src="https://i.ibb.co/bM3JqB0y/Whats-App-Image-2026-09-20-at-14-10-25.jpg" alt="Miniatura Mtende 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Mtende</h3>
@@ -2317,6 +2578,25 @@
                       <p>Mtende to również doskonałe miejsce, żeby po prostu zwolnić i nacieszyć się spokojem Oceanu Indyjskiego. Bez pośpiechu, bez głośnych atrakcji – tylko natura, ocean i piękne widoki.</p>
                       <p>Jeśli marzycie o Zanzibarze z dala od masowej turystyki, Mtende zdecydowanie warto wpisać na swoją listę. 💙</p>
                       <p class="experience-note">Warunki na plaży, możliwość kąpieli oraz dostępność niektórych jej części zależą od pływów i warunków pogodowych.</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Mtende (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg" data-alt="Mtende – dzika, spokojna plaża otoczona klifami" aria-label="Powiększ zdjęcie 1 Mtende">
+                            <img data-src="https://i.ibb.co/nN9JjCvL/469290871-552214417614306-3125713985708215367-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mtende 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/yFNVvC2M/Whats-App-Image-2026-09-20-at-14-10-38.jpg" data-alt="Mtende – turkusowy ocean i spektakularne klify" aria-label="Powiększ zdjęcie 2 Mtende">
+                            <img data-src="https://i.ibb.co/yFNVvC2M/Whats-App-Image-2026-09-20-at-14-10-38.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mtende 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/bM3JqB0y/Whats-App-Image-2026-09-20-at-14-10-25.jpg" data-alt="Mtende – naturalna plaża i odpływ na Zanzibarze" aria-label="Powiększ zdjęcie 3 Mtende">
+                            <img data-src="https://i.ibb.co/bM3JqB0y/Whats-App-Image-2026-09-20-at-14-10-25.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Mtende 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2326,13 +2606,32 @@
             <!-- Card 8: Secret Garden -->
             <article class="experience-card" id="exp-card-secret-garden">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 3 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Secret Garden">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Secret Garden">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-secret-garden"
                   src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg"
                   alt="Secret Garden – ukryta jaskinia z żółwiami"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-secret-garden">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg" data-alt="Secret Garden – ukryta jaskinia z żółwiami" aria-label="Zdjęcie 1 Secret Garden">
+                  <img src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg" alt="Miniatura Secret Garden 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/KcgY1pD7/Whats-App-Image-2026-09-20-at-14-05-18.jpg" data-alt="Secret Garden – krystaliczna woda i żółwie wodne" aria-label="Zdjęcie 2 Secret Garden">
+                  <img src="https://i.ibb.co/KcgY1pD7/Whats-App-Image-2026-09-20-at-14-05-18.jpg" alt="Miniatura Secret Garden 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/fVSNqKvf/Whats-App-Image-2026-09-20-at-14-05-02.jpg" data-alt="Secret Garden – bliskie spotkanie z naturą Zanzibaru" aria-label="Zdjęcie 3 Secret Garden">
+                  <img src="https://i.ibb.co/fVSNqKvf/Whats-App-Image-2026-09-20-at-14-05-02.jpg" alt="Miniatura Secret Garden 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Secret Garden</h3>
@@ -2350,6 +2649,25 @@
                       <p>Nie jest to miejsce, które odwiedza się dla wielkiej atrakcji czy spektakularnego programu. Odwiedza się je dla emocji. Dla tego małego zachwytu, kiedy odkrywasz coś ukrytego przed światem.</p>
                       <p>Secret Garden to jeden z tych zakątków Zanzibaru, który zostaje w pamięci właśnie dlatego, że jest trochę inny, trochę tajemniczy i naprawdę wyjątkowy. 🌴✨</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Secret Garden (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg" data-alt="Secret Garden – ukryta jaskinia z żółwiami" aria-label="Powiększ zdjęcie 1 Secret Garden">
+                            <img data-src="https://i.ibb.co/S74GZBPr/ZA-ES-046-LR3-Robby-Bolleyn-Medium-1704208470.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Secret Garden 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/KcgY1pD7/Whats-App-Image-2026-09-20-at-14-05-18.jpg" data-alt="Secret Garden – krystaliczna woda i żółwie wodne" aria-label="Powiększ zdjęcie 2 Secret Garden">
+                            <img data-src="https://i.ibb.co/KcgY1pD7/Whats-App-Image-2026-09-20-at-14-05-18.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Secret Garden 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/fVSNqKvf/Whats-App-Image-2026-09-20-at-14-05-02.jpg" data-alt="Secret Garden – bliskie spotkanie z naturą Zanzibaru" aria-label="Powiększ zdjęcie 3 Secret Garden">
+                            <img data-src="https://i.ibb.co/fVSNqKvf/Whats-App-Image-2026-09-20-at-14-05-02.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Secret Garden 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2359,13 +2677,35 @@
             <!-- Card 9: Kuza Cave -->
             <article class="experience-card" id="exp-card-kuza-cave">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 4 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Kuza Cave">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Kuza Cave">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-kuza-cave"
                   src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg"
                   alt="Kuza Cave – naturalny basen w wapiennej jaskini"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-kuza-cave">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg" data-alt="Kuza Cave – naturalny basen w wapiennej jaskini" aria-label="Zdjęcie 1 Kuza Cave">
+                  <img src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg" alt="Miniatura Kuza Cave 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/5xbk0vHh/Whats-App-Image-2026-09-20-at-14-06-38.jpg" data-alt="Kuza Cave – orzeźwiająca kąpiel w turkusowej wodzie" aria-label="Zdjęcie 2 Kuza Cave">
+                  <img src="https://i.ibb.co/5xbk0vHh/Whats-App-Image-2026-09-20-at-14-06-38.jpg" alt="Miniatura Kuza Cave 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/sdCq2M0g/Whats-App-Image-2026-09-20-at-14-06-03.jpg" data-alt="Kuza Cave – wapienne formacje skalne i mistyczny klimat" aria-label="Zdjęcie 3 Kuza Cave">
+                  <img src="https://i.ibb.co/sdCq2M0g/Whats-App-Image-2026-09-20-at-14-06-03.jpg" alt="Miniatura Kuza Cave 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/FkGj6k7V/Whats-App-Image-2026-09-20-at-14-05-47.jpg" data-alt="Kuza Cave – zejście do świętej jaskini" aria-label="Zdjęcie 4 Kuza Cave">
+                  <img src="https://i.ibb.co/FkGj6k7V/Whats-App-Image-2026-09-20-at-14-05-47.jpg" alt="Miniatura Kuza Cave 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Kuza Cave</h3>
@@ -2382,6 +2722,29 @@
                       <p>To właśnie takie miejsca lubię najbardziej – nie są tylko kolejnym punktem na mapie. Dają chwilę zachwytu, spokoju i poczucia, że odkrywamy Zanzibar trochę głębiej. ❤️</p>
                       <p>Kuza Cave – mały sekret Zanzibaru, który warto odkryć. 🌴✨</p>
                       <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z Kuza Cave (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg" data-alt="Kuza Cave – naturalny basen w wapiennej jaskini" aria-label="Powiększ zdjęcie 1 Kuza Cave">
+                            <img data-src="https://i.ibb.co/cKwkssw1/469064191-552214694280945-7344731809152454413-n.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kuza Cave 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/5xbk0vHh/Whats-App-Image-2026-09-20-at-14-06-38.jpg" data-alt="Kuza Cave – orzeźwiająca kąpiel w turkusowej wodzie" aria-label="Powiększ zdjęcie 2 Kuza Cave">
+                            <img data-src="https://i.ibb.co/5xbk0vHh/Whats-App-Image-2026-09-20-at-14-06-38.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kuza Cave 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/sdCq2M0g/Whats-App-Image-2026-09-20-at-14-06-03.jpg" data-alt="Kuza Cave – wapienne formacje skalne i mistyczny klimat" aria-label="Powiększ zdjęcie 3 Kuza Cave">
+                            <img data-src="https://i.ibb.co/sdCq2M0g/Whats-App-Image-2026-09-20-at-14-06-03.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kuza Cave 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/FkGj6k7V/Whats-App-Image-2026-09-20-at-14-05-47.jpg" data-alt="Kuza Cave – zejście do świętej jaskini" aria-label="Powiększ zdjęcie 4 Kuza Cave">
+                            <img data-src="https://i.ibb.co/FkGj6k7V/Whats-App-Image-2026-09-20-at-14-05-47.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kuza Cave 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2391,13 +2754,44 @@
             <!-- Card 10: Kendwa -->
             <article class="experience-card" id="exp-card-kendwa">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 7 zdjęć</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie Kendwa">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie Kendwa">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
+                  id="exp-main-img-kendwa"
                   src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg"
                   alt="Kendwa – zachód słońca nad Oceanem Indyjskim"
-                  class="experience-img"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-kendwa">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg" data-alt="Kendwa – zachód słońca nad Oceanem Indyjskim" aria-label="Zdjęcie 1 Kendwa">
+                  <img src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg" alt="Miniatura Kendwa 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/vxRzXy5x/Whats-App-Image-2026-09-20-at-14-23-28.jpg" data-alt="Kendwa – złote kolory zachodzącego słońca" aria-label="Zdjęcie 2 Kendwa">
+                  <img src="https://i.ibb.co/vxRzXy5x/Whats-App-Image-2026-09-20-at-14-23-28.jpg" alt="Miniatura Kendwa 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/Y481k2mN/Whats-App-Image-2026-09-20-at-14-22-54.jpg" data-alt="Kendwa – sylwetki łodzi dhow na horyzoncie" aria-label="Zdjęcie 3 Kendwa">
+                  <img src="https://i.ibb.co/Y481k2mN/Whats-App-Image-2026-09-20-at-14-22-54.jpg" alt="Miniatura Kendwa 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/G4k2z6b8/Whats-App-Image-2026-09-20-at-14-22-29.jpg" data-alt="Kendwa – biały piasek i spokojne fale" aria-label="Zdjęcie 4 Kendwa">
+                  <img src="https://i.ibb.co/G4k2z6b8/Whats-App-Image-2026-09-20-at-14-22-29.jpg" alt="Miniatura Kendwa 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/n8mK1h7Q/Whats-App-Image-2026-09-20-at-14-21-49.jpg" data-alt="Kendwa – wieczorny relaks na plaży" aria-label="Zdjęcie 5 Kendwa">
+                  <img src="https://i.ibb.co/n8mK1h7Q/Whats-App-Image-2026-09-20-at-14-21-49.jpg" alt="Miniatura Kendwa 5" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/h1Ww0W5H/Whats-App-Image-2026-09-20-at-14-21-27.jpg" data-alt="Kendwa – ciepły piasek i rajski klimat" aria-label="Zdjęcie 6 Kendwa">
+                  <img src="https://i.ibb.co/h1Ww0W5H/Whats-App-Image-2026-09-20-at-14-21-27.jpg" alt="Miniatura Kendwa 6" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/qF4jJ5hM/Whats-App-Image-2026-09-20-at-14-21-03.jpg" data-alt="Kendwa – niezapomniany zachód słońca na Zanzibarze" aria-label="Zdjęcie 7 Kendwa">
+                  <img src="https://i.ibb.co/qF4jJ5hM/Whats-App-Image-2026-09-20-at-14-21-03.jpg" alt="Miniatura Kendwa 7" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">Kendwa</h3>
@@ -2414,6 +2808,41 @@
                       <p>To idealny moment, żeby zdjąć buty, przejść się brzegiem, usiąść na piasku i po prostu być. Bez pośpiechu. Bez planu. Z szumem oceanu w tle.</p>
                       <p>I właśnie wtedy Zanzibar pokazuje swoje najpiękniejsze oblicze. Nie trzeba niczego więcej – wystarczy ocean, ciepły piasek i słońce, które powoli żegna się z wyspą. ✨</p>
                       <p>Kendwa to nie tylko plaża. To chwila, którą chce się zatrzymać na dłużej. 💙</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z plaży Kendwa (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg" data-alt="Kendwa – zachód słońca nad Oceanem Indyjskim" aria-label="Powiększ zdjęcie 1 Kendwa">
+                            <img data-src="https://i.ibb.co/bM9TQZtc/bungalow-na-plazy-kendwa-na-wyspie-zanzibar-tanzania-shutterstock-2685432547-2911849232.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/vxRzXy5x/Whats-App-Image-2026-09-20-at-14-23-28.jpg" data-alt="Kendwa – złote kolory zachodzącego słońca" aria-label="Powiększ zdjęcie 2 Kendwa">
+                            <img data-src="https://i.ibb.co/vxRzXy5x/Whats-App-Image-2026-09-20-at-14-23-28.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/Y481k2mN/Whats-App-Image-2026-09-20-at-14-22-54.jpg" data-alt="Kendwa – sylwetki łodzi dhow na horyzoncie" aria-label="Powiększ zdjęcie 3 Kendwa">
+                            <img data-src="https://i.ibb.co/Y481k2mN/Whats-App-Image-2026-09-20-at-14-22-54.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/G4k2z6b8/Whats-App-Image-2026-09-20-at-14-22-29.jpg" data-alt="Kendwa – biały piasek i spokojne fale" aria-label="Powiększ zdjęcie 4 Kendwa">
+                            <img data-src="https://i.ibb.co/G4k2z6b8/Whats-App-Image-2026-09-20-at-14-22-29.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/n8mK1h7Q/Whats-App-Image-2026-09-20-at-14-21-49.jpg" data-alt="Kendwa – wieczorny relaks na plaży" aria-label="Powiększ zdjęcie 5 Kendwa">
+                            <img data-src="https://i.ibb.co/n8mK1h7Q/Whats-App-Image-2026-09-20-at-14-21-49.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 5" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/h1Ww0W5H/Whats-App-Image-2026-09-20-at-14-21-27.jpg" data-alt="Kendwa – ciepły piasek i rajski klimat" aria-label="Powiększ zdjęcie 6 Kendwa">
+                            <img data-src="https://i.ibb.co/h1Ww0W5H/Whats-App-Image-2026-09-20-at-14-21-27.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 6" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/qF4jJ5hM/Whats-App-Image-2026-09-20-at-14-21-03.jpg" data-alt="Kendwa – niezapomniany zachód słońca na Zanzibarze" aria-label="Powiększ zdjęcie 7 Kendwa">
+                            <img data-src="https://i.ibb.co/qF4jJ5hM/Whats-App-Image-2026-09-20-at-14-21-03.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Kendwa 7" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2479,13 +2908,13 @@
                   <img src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" alt="Miniatura Wędkowanie 1" loading="lazy" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" data-alt="Wędkowanie na Zanzibarze – morska wyprawa łodzią" aria-label="Zdjęcie 2 Wędkowanie">
-                  <img src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" alt="Miniatura Wędkowanie 2" loading="lazy" />
+                  <img src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" alt="Miniatura Wędkowanie 2" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" data-alt="Wędkowanie na Zanzibarze – złowiona ryba i zadowolenie" data-pos="center 20%" aria-label="Zdjęcie 3 Wędkowanie">
                   <img src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" alt="Miniatura Wędkowanie 3" loading="lazy" style="object-position: center 20%;" />
                 </button>
                 <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" data-alt="Wędkowanie na Zanzibarze – emocje i trofeum z oceanu" aria-label="Zdjęcie 4 Wędkowanie">
-                  <img src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" alt="Miniatura Wędkowanie 4" loading="lazy" />
+                  <img src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" alt="Miniatura Wędkowanie 4" loading="lazy" decoding="async" fetchpriority="low" />
                 </button>
               </div>
               <div class="experience-body">
@@ -2510,11 +2939,11 @@
                         <span class="tour-gallery-label">✦ Kadry z wędkowania na oceanie (kliknij, aby powiększyć):</span>
                         <div class="tour-gallery-grid">
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" data-alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim" aria-label="Powiększ zdjęcie 1 Wędkowanie">
-                            <img src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" alt="Wędkowanie 1" loading="lazy" />
+                            <img data-src="https://i.ibb.co/h1XWbP52/Whats-App-Image-2026-09-14-at-13-56-45-2.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Wędkowanie 1" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" data-alt="Wędkowanie na Zanzibarze – morska wyprawa łodzią" aria-label="Powiększ zdjęcie 2 Wędkowanie">
-                            <img src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" alt="Wędkowanie 2" loading="lazy" />
+                            <img data-src="https://i.ibb.co/1fwvW244/Whats-App-Image-2026-09-14-at-13-56-45-1.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Wędkowanie 2" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/mrdwQb88/Whats-App-Image-2026-09-14-at-13-56-45.jpg" data-alt="Wędkowanie na Zanzibarze – złowiona ryba i zadowolenie" aria-label="Powiększ zdjęcie 3 Wędkowanie">
@@ -2522,7 +2951,7 @@
                             <span class="zoom-badge">🔍</span>
                           </button>
                           <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" data-alt="Wędkowanie na Zanzibarze – emocje i trofeum z oceanu" aria-label="Powiększ zdjęcie 4 Wędkowanie">
-                            <img src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" alt="Wędkowanie 4" loading="lazy" />
+                            <img data-src="https://i.ibb.co/vxpCqygW/Whats-App-Image-2026-09-14-at-13-56-44.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="Wędkowanie 4" loading="lazy" decoding="async" fetchpriority="low" />
                             <span class="zoom-badge">🔍</span>
                           </button>
                         </div>
@@ -2570,13 +2999,35 @@
             <!-- Card 6: The Rock Restaurant -->
             <article class="experience-card" id="exp-card-therock">
               <div class="experience-img-wrap">
+                <span class="experience-photo-count">📷 4 zdjęcia</span>
+                <button type="button" class="card-arrow-btn card-arrow-prev" aria-label="Poprzednie zdjęcie The Rock Restaurant">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="card-arrow-btn card-arrow-next" aria-label="Następne zdjęcie The Rock Restaurant">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
                 <img
-                  src="https://i.ibb.co/JWjRLqVz/469074014-552214544280960-5277976993966686069-n.jpg"
-                  alt="The Rock Restaurant – restauracja na oceanicznej skale"
-                  class="experience-img"
+                  id="exp-main-img-therock"
+                  src="https://i.ibb.co/8LGsvzmr/Whats-App-Image-2026-09-20-at-14-19-58.jpg"
+                  alt="The Rock Restaurant – słynna restauracja na oceanicznej skale"
+                  class="experience-img zoomable-card-img"
                   loading="lazy"
                   decoding="async"
                 />
+              </div>
+              <div class="card-thumbs-strip" data-target="exp-main-img-therock">
+                <button type="button" class="card-thumb-item active" data-src="https://i.ibb.co/8LGsvzmr/Whats-App-Image-2026-09-20-at-14-19-58.jpg" data-alt="The Rock Restaurant – widok z oceanu na skałę" aria-label="Zdjęcie 1 The Rock Restaurant">
+                  <img src="https://i.ibb.co/8LGsvzmr/Whats-App-Image-2026-09-20-at-14-19-58.jpg" alt="Miniatura The Rock 1" loading="lazy" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/cKd7bbS4/Whats-App-Image-2026-09-20-at-14-19-27.jpg" data-alt="The Rock Restaurant – krystaliczna woda i odpływ" aria-label="Zdjęcie 2 The Rock Restaurant">
+                  <img src="https://i.ibb.co/cKd7bbS4/Whats-App-Image-2026-09-20-at-14-19-27.jpg" alt="Miniatura The Rock 2" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/sTjGRPr/Whats-App-Image-2026-09-20-at-14-16-36.jpg" data-alt="The Rock Restaurant – unikalna architektura na koralowej skale" aria-label="Zdjęcie 3 The Rock Restaurant">
+                  <img src="https://i.ibb.co/sTjGRPr/Whats-App-Image-2026-09-20-at-14-16-36.jpg" alt="Miniatura The Rock 3" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
+                <button type="button" class="card-thumb-item" data-src="https://i.ibb.co/wFDfG247/Whats-App-Image-2026-09-20-at-14-17-06.jpg" data-alt="The Rock Restaurant – zachwycający krajobraz Zanzibaru" aria-label="Zdjęcie 4 The Rock Restaurant">
+                  <img src="https://i.ibb.co/wFDfG247/Whats-App-Image-2026-09-20-at-14-17-06.jpg" alt="Miniatura The Rock 4" loading="lazy" decoding="async" fetchpriority="low" />
+                </button>
               </div>
               <div class="experience-body">
                 <h3 class="experience-title">The Rock Restaurant</h3>
@@ -2591,6 +3042,30 @@
                       <p>Ale warto odwiedzić ją nie tylko dla samej restauracji czy jedzenia. To przede wszystkim miejsce, które aż prosi się o piękne zdjęcia! 📸 Turkusowa woda, biała plaża, skała pośrodku oceanu i charakterystyczny budynek tworzą wyjątkowe, zanzibarskie kadry.</p>
                       <p>Można zrobić tutaj pamiątkowe zdjęcia z widokiem na The Rock, przejść się po plaży i nacieszyć oczy niesamowitym krajobrazem. Przy odpływie można podejść bliżej restauracji, a podczas przypływu wygląda ona, jakby naprawdę unosiła się na oceanie. ✨</p>
                       <p>The Rock to jeden z tych punktów na Zanzibarze, które warto zobaczyć choćby po to, żeby zrobić tę jedną wyjątkową fotografię, która będzie przypominać o wyspie jeszcze długo po powrocie. 🌴💙</p>
+                      <p class="experience-note" style="margin-top: 8px; font-weight: 500;">Zanzibar wycieczki marzeń z Anią</p>
+
+                      <!-- Tour Photo Mini Gallery -->
+                      <div class="tour-gallery-preview">
+                        <span class="tour-gallery-label">✦ Kadry z The Rock Restaurant (kliknij, aby powiększyć):</span>
+                        <div class="tour-gallery-grid">
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/8LGsvzmr/Whats-App-Image-2026-09-20-at-14-19-58.jpg" data-alt="The Rock Restaurant – widok z oceanu na skałę" aria-label="Powiększ zdjęcie 1 The Rock Restaurant">
+                            <img data-src="https://i.ibb.co/8LGsvzmr/Whats-App-Image-2026-09-20-at-14-19-58.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="The Rock Restaurant 1" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/cKd7bbS4/Whats-App-Image-2026-09-20-at-14-19-27.jpg" data-alt="The Rock Restaurant – krystaliczna woda i odpływ" aria-label="Powiększ zdjęcie 2 The Rock Restaurant">
+                            <img data-src="https://i.ibb.co/cKd7bbS4/Whats-App-Image-2026-09-20-at-14-19-27.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="The Rock Restaurant 2" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/sTjGRPr/Whats-App-Image-2026-09-20-at-14-16-36.jpg" data-alt="The Rock Restaurant – unikalna architektura na koralowej skale" aria-label="Powiększ zdjęcie 3 The Rock Restaurant">
+                            <img data-src="https://i.ibb.co/sTjGRPr/Whats-App-Image-2026-09-20-at-14-16-36.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="The Rock Restaurant 3" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                          <button type="button" class="tour-gallery-item" data-src="https://i.ibb.co/wFDfG247/Whats-App-Image-2026-09-20-at-14-17-06.jpg" data-alt="The Rock Restaurant – zachwycający krajobraz Zanzibaru" aria-label="Powiększ zdjęcie 4 The Rock Restaurant">
+                            <img data-src="https://i.ibb.co/wFDfG247/Whats-App-Image-2026-09-20-at-14-17-06.jpg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Crect width='100%25' height='100%25' fill='%231f3b30'/%3E%3C/svg%3E" alt="The Rock Restaurant 4" loading="lazy" decoding="async" fetchpriority="low" />
+                            <span class="zoom-badge">🔍</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </details>
                 </div>
@@ -2693,6 +3168,7 @@
                 alt="Turkusowy ocean i rajska plaża na Zanzibarze"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2702,6 +3178,7 @@
                 alt="Atol Mnemba – błękit oceanu i rejs ku rafom koralowym"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2711,6 +3188,7 @@
                 alt="Urokliwe uliczki historycznego Stone Town"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2720,6 +3198,7 @@
                 alt="Wędkowanie na Zanzibarze – połów ryb na Oceanie Indyjskim"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2729,6 +3208,7 @@
                 alt="Wyprawa łodzią na Atol Mnemba"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2738,6 +3218,7 @@
                 alt="Zabytkowa architektura i detale Stone Town"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2747,6 +3228,7 @@
                 alt="Morska wyprawa wędkarska z załogą"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2756,6 +3238,7 @@
                 alt="Snurkowanie przy Atolu Mnemba – bogaty podwodny świat"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2766,6 +3249,7 @@
                 alt="Biały piasek sandbanku przy Atolu Mnemba"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2775,6 +3259,7 @@
                 alt="Krystaliczne wody Oceanu Indyjskiego wokół Mnemba"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2784,6 +3269,7 @@
                 alt="Rzeźbione zanzibarskie drzwi i kolory Stone Town"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2793,6 +3279,7 @@
                 alt="Zwiedzanie historycznego centrum Stone Town z przewodnikiem"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2802,6 +3289,7 @@
                 alt="Udany połów – okazała ryba z wód Zanzibaru"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2811,6 +3299,7 @@
                 alt="Radość i emocje po wyholowaniu ryby na oceanie"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2820,6 +3309,7 @@
                 alt="Krystaliczna woda i biały piasek Zanzibaru"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2829,6 +3319,7 @@
                 alt="Egzotyczna przyroda i zanzibarskie krajobrazy"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2838,6 +3329,7 @@
                 alt="Wyprawa łodzią na oceaniczny sandbank"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2847,6 +3339,7 @@
                 alt="Relaks na rajskiej plaży w Uroa"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2856,6 +3349,7 @@
                 alt="Tradycyjna zanzibarska łódź dhow na oceanie"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2865,6 +3359,7 @@
                 alt="Tropikalna roślinność i palmy na Zanzibarze"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2874,6 +3369,7 @@
                 alt="Urokliwe widoki wybrzeża Zanzibaru"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2883,6 +3379,7 @@
                 alt="Wyprawa safari i dzika przyroda Tanzańska"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2892,6 +3389,7 @@
                 alt="Odkrywanie zakątków wyspy z Anią"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2901,6 +3399,7 @@
                 alt="Błękit nieba i turkus Oceanu Indyjskiego"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2910,6 +3409,7 @@
                 alt="Zanzibarskie plaże o zachodzie słońca"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2919,6 +3419,7 @@
                 alt="Niezwykłe chwile i lokalny koloryt wyspy"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2928,6 +3429,7 @@
                 alt="Kameralna atmosfera podczas rejsu"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2937,6 +3439,7 @@
                 alt="Spokój i relaks w rytmie hakuna matata"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
 
@@ -2946,6 +3449,7 @@
                 alt="Wspomnienia z wakacji marzeń na Zanzibarze"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </figure>
           </div>
@@ -3224,6 +3728,40 @@
           });
         }
 
+        // --- Global In-Memory Image Preloader Cache ---
+        const imageMemoryCache = new Set();
+        function preloadImage(url) {
+          if (!url || imageMemoryCache.has(url)) return;
+          imageMemoryCache.add(url);
+          const img = new Image();
+          img.decoding = 'async';
+          img.src = url;
+        }
+
+        // --- Details Accordion: Hydrate preview images on demand ---
+        const tourDetailsList = document.querySelectorAll('details.experience-details');
+        tourDetailsList.forEach((details) => {
+          function hydrateImages() {
+            const previewImgs = details.querySelectorAll('.tour-gallery-item img[data-src]');
+            previewImgs.forEach((img) => {
+              const realSrc = img.getAttribute('data-src');
+              if (realSrc && img.src !== realSrc) {
+                img.src = realSrc;
+              }
+            });
+          }
+
+          details.addEventListener('toggle', () => {
+            if (details.open) hydrateImages();
+          });
+
+          const summary = details.querySelector('summary');
+          if (summary) {
+            summary.addEventListener('mouseenter', hydrateImages, { once: true });
+            summary.addEventListener('touchstart', hydrateImages, { once: true });
+          }
+        });
+
         // --- Card Thumbnails & Arrows Navigation ---
         const experienceCards = document.querySelectorAll('.experience-card');
         experienceCards.forEach((card) => {
@@ -3255,23 +3793,46 @@
               selectedThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             } catch (err) {}
 
-            targetImg.style.opacity = '0.3';
-            targetImg.style.transform = 'scale(0.98)';
-            setTimeout(() => {
+            if (targetImg.src === newSrc) return;
+
+            // Instant switch if pre-cached, smooth fast transition if loading
+            const tester = new Image();
+            tester.decoding = 'async';
+            tester.onload = () => {
               targetImg.src = newSrc;
               if (newAlt) targetImg.alt = newAlt;
-              if (newPos) {
-                targetImg.style.objectPosition = newPos;
-              } else {
-                targetImg.style.objectPosition = '';
-              }
-              targetImg.style.opacity = '1';
-              targetImg.style.transform = 'scale(1)';
-            }, 120);
+              if (newPos) targetImg.style.objectPosition = newPos;
+              else targetImg.style.objectPosition = '';
+              targetImg.classList.remove('img-switching');
+            };
+            tester.src = newSrc;
+
+            if (tester.complete) {
+              // Already loaded in memory cache: 0ms switch!
+              targetImg.src = newSrc;
+              if (newAlt) targetImg.alt = newAlt;
+              if (newPos) targetImg.style.objectPosition = newPos;
+              else targetImg.style.objectPosition = '';
+              targetImg.classList.remove('img-switching');
+            } else {
+              targetImg.classList.add('img-switching');
+            }
+
+            // Immediately preload adjacent images (next and previous)
+            const nextIdx = (activeIndex + 1) % thumbs.length;
+            const prevIdx = (activeIndex - 1 + thumbs.length) % thumbs.length;
+            preloadImage(thumbs[nextIdx]?.getAttribute('data-src'));
+            preloadImage(thumbs[prevIdx]?.getAttribute('data-src'));
           }
 
-          // Thumbnail click handler
+          // Thumbnail click & hover prefetch handler
           thumbs.forEach((thumb, idx) => {
+            thumb.addEventListener('mouseenter', () => {
+              preloadImage(thumb.getAttribute('data-src'));
+            });
+            thumb.addEventListener('touchstart', () => {
+              preloadImage(thumb.getAttribute('data-src'));
+            }, { passive: true });
             thumb.addEventListener('click', (e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -3279,11 +3840,15 @@
             });
           });
 
-          // Left/Right Arrow button handlers
+          // Left/Right Arrow button handlers & hover prefetch
           const prevBtn = card.querySelector('.card-arrow-prev');
           const nextBtn = card.querySelector('.card-arrow-next');
 
           if (prevBtn) {
+            prevBtn.addEventListener('mouseenter', () => {
+              const pIdx = (activeIndex - 1 + thumbs.length) % thumbs.length;
+              preloadImage(thumbs[pIdx]?.getAttribute('data-src'));
+            });
             prevBtn.addEventListener('click', (e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -3292,6 +3857,10 @@
           }
 
           if (nextBtn) {
+            nextBtn.addEventListener('mouseenter', () => {
+              const nIdx = (activeIndex + 1) % thumbs.length;
+              preloadImage(thumbs[nIdx]?.getAttribute('data-src'));
+            });
             nextBtn.addEventListener('click', (e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -3299,6 +3868,27 @@
             });
           }
         });
+
+        // Background preloading for visible and approaching cards
+        if ('IntersectionObserver' in window) {
+          const cardPreloadObserver = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const card = entry.target;
+                  const cardThumbs = card.querySelectorAll('.card-thumb-item');
+                  // Preload 2nd and 3rd photo of this card in background
+                  if (cardThumbs[1]) preloadImage(cardThumbs[1].getAttribute('data-src'));
+                  if (cardThumbs[2]) preloadImage(cardThumbs[2].getAttribute('data-src'));
+                  obs.unobserve(card);
+                }
+              });
+            },
+            { rootMargin: '350px 0px' }
+          );
+
+          experienceCards.forEach((c) => cardPreloadObserver.observe(c));
+        }
 
         // --- Lightbox Modal ---
         const lightbox = document.getElementById('site-lightbox');
@@ -3422,6 +4012,13 @@
             fig.addEventListener('click', () => {
               openLightbox(siteGalleryList, index);
             });
+          });
+        }
+
+        // 4. Register Service Worker for aggressive local caching
+        if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
           });
         }
       });
